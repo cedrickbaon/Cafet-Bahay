@@ -119,7 +119,6 @@
             txtAdminUserName.Name = "txtAdminUserName";
             txtAdminUserName.Size = new Size(506, 50);
             txtAdminUserName.TabIndex = 2;
-            txtAdminUserName.TextChanged += textBox1_TextChanged;
             // 
             // btnAdminLoginButton
             // 
@@ -136,6 +135,7 @@
             btnAdminLoginButton.TabIndex = 1;
             btnAdminLoginButton.Text = "Login";
             btnAdminLoginButton.UseVisualStyleBackColor = false;
+            btnAdminLoginButton.Click += btnAdminLoginButton_Click;
             // 
             // label2
             // 

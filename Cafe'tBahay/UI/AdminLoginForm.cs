@@ -16,13 +16,23 @@ namespace UI
         {
             InitializeComponent();
         }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void btnAdminLoginButton_Click(object sender, EventArgs e)
         {
-            if (txtAdminUserName.Text == "Username")
+            if (string.IsNullOrWhiteSpace(txtAdminUserName.Text) || string.IsNullOrWhiteSpace(txtAdminPassword.Text))
             {
-                txtAdminUserName.Text = "";
-                txtAdminUserName.ForeColor = Color.Black;
+                MessageBox.Show("Please enter both username and password.", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (txtAdminUserName.Text == "admin" && txtAdminPassword.Text == "admin123")
+            {
+                AdminDashboard adminDashboard = new AdminDashboard();
+                adminDashboard.Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Invalid Admin Username or Password", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
