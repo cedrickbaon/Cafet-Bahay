@@ -17,13 +17,24 @@ namespace UI
             InitializeComponent();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void btnAdminLoginButton_Click(object sender, EventArgs e)
         {
-            if (txtAdminUserName.Text == "Username")
+            string username = txtAdminUserName.Text;
+            string password = txtAdminPassword.Text;
+
+
+            if (username == "admin" && password == "admin123")
             {
-                txtAdminUserName.Text = "";
-                txtAdminUserName.ForeColor = Color.Black;
+                AdminDashboard adminDash = new AdminDashboard();
+                adminDash.Show();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Invalid admin credentials");
+                txtAdminPassword.Clear();
             }
         }
     }
-}
+ }
+
