@@ -62,6 +62,7 @@
     <Folder Include="StoredProc" />
   </ItemGroup>
   <ItemGroup>
+    <Build Include="Table\tblProducts.sql" />
     <Build Include="Table\tblCategory.sql" />
     <Build Include="Table\tblUser.sql" />
   </ItemGroup>
