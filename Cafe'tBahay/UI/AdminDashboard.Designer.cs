@@ -161,7 +161,7 @@
             btnSupplier.Name = "btnSupplier";
             btnSupplier.Size = new Size(210, 56);
             btnSupplier.TabIndex = 4;
-            btnSupplier.Text = "Supplier Database";
+            btnSupplier.Text = "Supplier";
             btnSupplier.TextAlign = ContentAlignment.MiddleLeft;
             btnSupplier.UseVisualStyleBackColor = true;
             // 
@@ -175,7 +175,7 @@
             btnCategory.Name = "btnCategory";
             btnCategory.Size = new Size(210, 56);
             btnCategory.TabIndex = 5;
-            btnCategory.Text = "Category Database";
+            btnCategory.Text = "Category";
             btnCategory.TextAlign = ContentAlignment.MiddleLeft;
             btnCategory.UseVisualStyleBackColor = true;
             // 
