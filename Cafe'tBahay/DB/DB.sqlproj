@@ -61,4 +61,7 @@
     <Folder Include="View" />
     <Folder Include="StoredProc" />
   </ItemGroup>
+  <ItemGroup>
+    <Build Include="Table\tblProducts.sql" />
+  </ItemGroup>
 </Project>
