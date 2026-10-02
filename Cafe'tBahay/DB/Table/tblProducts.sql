@@ -9,6 +9,6 @@
 	[Product Status] VARCHAR (8) NULL,
 
 	FOREIGN KEY (Category ID) REFERENCES tblCategory(Category ID),
-	FOREIGN KEY (Supplier ID) REFERENCES tblSupplier(Supplier ID)
+	FOREIGN KEY (Supplier ID) REFERENCES tblSupplierTable(Supplier ID)
 
 )
