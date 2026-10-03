@@ -16,5 +16,21 @@ namespace UI
         {
             InitializeComponent();
         }
+
+        private void btnSupplier_Click(object sender, EventArgs e)
+        {
+            pnlContent.Controls.Clear();
+            var page = new ucSupplier();
+            page.Dock = DockStyle.Fill;
+            pnlContent.Controls.Add(page);
+        }
+
+        private void btnReports_Click(object sender, EventArgs e)
+        {
+            pnlContent.Controls.Clear();
+            var page = new usInventory_Sales();
+            page.Dock = DockStyle.Fill;
+            pnlContent.Controls.Add(page);
+        }
     }
 }
