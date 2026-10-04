@@ -42,7 +42,7 @@
             btnUserRole = new Button();
             btnProduct = new Button();
             btnProductSearch = new Button();
-            btnReports = new Button();
+            btnInventoryandSales = new Button();
             btnLogout = new Button();
             pnlSidebar = new Panel();
             pnlHeader.SuspendLayout();
@@ -210,18 +210,18 @@
             btnProductSearch.Text = "Product Search";
             btnProductSearch.UseVisualStyleBackColor = true;
             // 
-            // btnReports
+            // btnInventoryandSales
             // 
-            btnReports.FlatStyle = FlatStyle.Flat;
-            btnReports.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnReports.ForeColor = Color.White;
-            btnReports.Location = new Point(13, 345);
-            btnReports.Name = "btnReports";
-            btnReports.Size = new Size(184, 37);
-            btnReports.TabIndex = 9;
-            btnReports.Text = "Inventory && Sales Report";
-            btnReports.UseVisualStyleBackColor = true;
-            btnReports.Click += btnReports_Click;
+            btnInventoryandSales.FlatStyle = FlatStyle.Flat;
+            btnInventoryandSales.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnInventoryandSales.ForeColor = Color.White;
+            btnInventoryandSales.Location = new Point(13, 345);
+            btnInventoryandSales.Name = "btnInventoryandSales";
+            btnInventoryandSales.Size = new Size(184, 37);
+            btnInventoryandSales.TabIndex = 9;
+            btnInventoryandSales.Text = "Inventory && Sales Report";
+            btnInventoryandSales.UseVisualStyleBackColor = true;
+            btnInventoryandSales.Click += btnInventoryandSales_Click_1;
             // 
             // btnLogout
             // 
@@ -239,7 +239,7 @@
             // 
             pnlSidebar.BackColor = Color.FromArgb(31, 41, 55);
             pnlSidebar.Controls.Add(btnLogout);
-            pnlSidebar.Controls.Add(btnReports);
+            pnlSidebar.Controls.Add(btnInventoryandSales);
             pnlSidebar.Controls.Add(btnProductSearch);
             pnlSidebar.Controls.Add(btnProduct);
             pnlSidebar.Controls.Add(btnUserRole);
@@ -290,7 +290,7 @@
         private System.Windows.Forms.Button btnUserRole;
         private System.Windows.Forms.Button btnProduct;
         private System.Windows.Forms.Button btnProductSearch;
-        private System.Windows.Forms.Button btnReports;
+        private System.Windows.Forms.Button btnInventoryandSales;
         private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.Panel pnlSidebar;
     }
