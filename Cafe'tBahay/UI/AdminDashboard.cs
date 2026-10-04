@@ -1,4 +1,5 @@
 ﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,9 @@ namespace UI
 {
     public partial class AdminDashboard : Form
     {
+        private ucSupplier supplierPage = new ucSupplier();
+        private usInventory_Sales reportsPage = new usInventory_Sales();
+
         public AdminDashboard()
         {
             InitializeComponent();
@@ -20,17 +24,14 @@ namespace UI
         private void btnSupplier_Click(object sender, EventArgs e)
         {
             pnlContent.Controls.Clear();
-            var page = new ucSupplier();
-            page.Dock = DockStyle.Fill;
-            pnlContent.Controls.Add(page);
+            supplierPage.Dock = DockStyle.Fill;
+            pnlContent.Controls.Add(supplierPage);
         }
-
-        private void btnReports_Click(object sender, EventArgs e)
+        private void btnInventoryandSales_Click_1(object sender, EventArgs e)
         {
             pnlContent.Controls.Clear();
-            var page = new usInventory_Sales();
-            page.Dock = DockStyle.Fill;
-            pnlContent.Controls.Add(page);
+            reportsPage.Dock = DockStyle.Fill;
+            pnlContent.Controls.Add(reportsPage);
         }
     }
 }

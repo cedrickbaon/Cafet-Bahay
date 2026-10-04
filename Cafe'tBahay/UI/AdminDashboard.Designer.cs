@@ -40,9 +40,9 @@
             btnSupplier = new Button();
             btnCategory = new Button();
             btnUserRole = new Button();
-            btnProduct = new Button();
+            btnProductMaintenance = new Button();
             btnProductSearch = new Button();
-            btnReports = new Button();
+            btnInventoryandSales = new Button();
             btnLogout = new Button();
             pnlSidebar = new Panel();
             pnlHeader.SuspendLayout();
@@ -186,17 +186,17 @@
             btnUserRole.Text = "User Role Management";
             btnUserRole.UseVisualStyleBackColor = true;
             // 
-            // btnProduct
+            // btnProductMaintenance
             // 
-            btnProduct.FlatStyle = FlatStyle.Flat;
-            btnProduct.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnProduct.ForeColor = Color.White;
-            btnProduct.Location = new Point(13, 239);
-            btnProduct.Name = "btnProduct";
-            btnProduct.Size = new Size(184, 48);
-            btnProduct.TabIndex = 7;
-            btnProduct.Text = "Product Maintenance";
-            btnProduct.UseVisualStyleBackColor = true;
+            btnProductMaintenance.FlatStyle = FlatStyle.Flat;
+            btnProductMaintenance.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnProductMaintenance.ForeColor = Color.White;
+            btnProductMaintenance.Location = new Point(13, 239);
+            btnProductMaintenance.Name = "btnProductMaintenance";
+            btnProductMaintenance.Size = new Size(184, 48);
+            btnProductMaintenance.TabIndex = 7;
+            btnProductMaintenance.Text = "Product Maintenance";
+            btnProductMaintenance.UseVisualStyleBackColor = true;
             // 
             // btnProductSearch
             // 
@@ -210,18 +210,18 @@
             btnProductSearch.Text = "Product Search";
             btnProductSearch.UseVisualStyleBackColor = true;
             // 
-            // btnReports
+            // btnInventoryandSales
             // 
-            btnReports.FlatStyle = FlatStyle.Flat;
-            btnReports.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnReports.ForeColor = Color.White;
-            btnReports.Location = new Point(13, 345);
-            btnReports.Name = "btnReports";
-            btnReports.Size = new Size(184, 37);
-            btnReports.TabIndex = 9;
-            btnReports.Text = "Inventory && Sales Report";
-            btnReports.UseVisualStyleBackColor = true;
-            btnReports.Click += btnReports_Click;
+            btnInventoryandSales.FlatStyle = FlatStyle.Flat;
+            btnInventoryandSales.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnInventoryandSales.ForeColor = Color.White;
+            btnInventoryandSales.Location = new Point(13, 345);
+            btnInventoryandSales.Name = "btnInventoryandSales";
+            btnInventoryandSales.Size = new Size(184, 37);
+            btnInventoryandSales.TabIndex = 9;
+            btnInventoryandSales.Text = "Inventory && Sales Report";
+            btnInventoryandSales.UseVisualStyleBackColor = true;
+            btnInventoryandSales.Click += btnInventoryandSales_Click_1;
             // 
             // btnLogout
             // 
@@ -239,9 +239,9 @@
             // 
             pnlSidebar.BackColor = Color.FromArgb(31, 41, 55);
             pnlSidebar.Controls.Add(btnLogout);
-            pnlSidebar.Controls.Add(btnReports);
+            pnlSidebar.Controls.Add(btnInventoryandSales);
             pnlSidebar.Controls.Add(btnProductSearch);
-            pnlSidebar.Controls.Add(btnProduct);
+            pnlSidebar.Controls.Add(btnProductMaintenance);
             pnlSidebar.Controls.Add(btnUserRole);
             pnlSidebar.Controls.Add(btnCategory);
             pnlSidebar.Controls.Add(btnSupplier);
@@ -288,9 +288,9 @@
         private System.Windows.Forms.Button btnSupplier;
         private System.Windows.Forms.Button btnCategory;
         private System.Windows.Forms.Button btnUserRole;
-        private System.Windows.Forms.Button btnProduct;
+        private System.Windows.Forms.Button btnProductMaintenance;
         private System.Windows.Forms.Button btnProductSearch;
-        private System.Windows.Forms.Button btnReports;
+        private System.Windows.Forms.Button btnInventoryandSales;
         private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.Panel pnlSidebar;
     }
