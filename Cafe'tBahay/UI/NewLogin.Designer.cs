@@ -1,6 +1,6 @@
 ﻿namespace UI
 {
-    partial class AdminLoginForm
+    partial class NewLogin
     {
         /// <summary>
         /// Required designer variable.
@@ -33,8 +33,9 @@
             panel2 = new Panel();
             label4 = new Label();
             label3 = new Label();
-            txtAdminPassword = new TextBox();
-            txtAdminUserName = new TextBox();
+            txtPassword = new TextBox();
+            btnLogin = new Button();
+            txtUserName = new TextBox();
             btnAdminLoginButton = new Button();
             label2 = new Label();
             panel1.SuspendLayout();
@@ -49,8 +50,8 @@
             panel1.ForeColor = SystemColors.AppWorkspace;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(894, 59);
-            panel1.TabIndex = 1;
+            panel1.Size = new Size(870, 59);
+            panel1.TabIndex = 2;
             // 
             // label1
             // 
@@ -58,7 +59,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Tahoma", 18.3396225F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = SystemColors.ActiveCaptionText;
-            label1.Location = new Point(67, 9);
+            label1.Location = new Point(39, 9);
             label1.Name = "label1";
             label1.Size = new Size(767, 33);
             label1.TabIndex = 0;
@@ -70,25 +71,26 @@
             panel2.BackColor = SystemColors.ControlDark;
             panel2.Controls.Add(label4);
             panel2.Controls.Add(label3);
-            panel2.Controls.Add(txtAdminPassword);
-            panel2.Controls.Add(txtAdminUserName);
+            panel2.Controls.Add(txtPassword);
+            panel2.Controls.Add(btnLogin);
+            panel2.Controls.Add(txtUserName);
             panel2.Controls.Add(btnAdminLoginButton);
             panel2.Controls.Add(label2);
             panel2.ForeColor = SystemColors.ActiveBorder;
-            panel2.Location = new Point(117, 116);
+            panel2.Location = new Point(118, 101);
             panel2.Name = "panel2";
             panel2.Size = new Size(635, 385);
-            panel2.TabIndex = 2;
+            panel2.TabIndex = 3;
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Tahoma", 16.3018875F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.ForeColor = SystemColors.ActiveCaptionText;
-            label4.Location = new Point(67, 206);
+            label4.Location = new Point(67, 212);
             label4.Name = "label4";
             label4.Size = new Size(143, 30);
-            label4.TabIndex = 5;
+            label4.TabIndex = 7;
             label4.Text = "Password:";
             // 
             // label3
@@ -99,26 +101,43 @@
             label3.Location = new Point(67, 105);
             label3.Name = "label3";
             label3.Size = new Size(149, 30);
-            label3.TabIndex = 4;
+            label3.TabIndex = 6;
             label3.Text = "Username:";
             // 
-            // txtAdminPassword
+            // txtPassword
             // 
-            txtAdminPassword.Font = new Font("Tahoma", 23.7735844F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtAdminPassword.ForeColor = Color.Black;
-            txtAdminPassword.Location = new Point(67, 239);
-            txtAdminPassword.Name = "txtAdminPassword";
-            txtAdminPassword.Size = new Size(506, 50);
-            txtAdminPassword.TabIndex = 3;
+            txtPassword.Font = new Font("Tahoma", 23.7735844F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtPassword.ForeColor = Color.Black;
+            txtPassword.Location = new Point(67, 245);
+            txtPassword.Name = "txtPassword";
+            txtPassword.Size = new Size(506, 50);
+            txtPassword.TabIndex = 5;
             // 
-            // txtAdminUserName
+            // btnLogin
             // 
-            txtAdminUserName.Font = new Font("Tahoma", 23.7735844F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtAdminUserName.ForeColor = Color.Black;
-            txtAdminUserName.Location = new Point(67, 138);
-            txtAdminUserName.Name = "txtAdminUserName";
-            txtAdminUserName.Size = new Size(506, 50);
-            txtAdminUserName.TabIndex = 2;
+            btnLogin.Anchor = AnchorStyles.None;
+            btnLogin.BackColor = Color.Gray;
+            btnLogin.FlatAppearance.BorderColor = SystemColors.ActiveBorder;
+            btnLogin.FlatAppearance.BorderSize = 0;
+            btnLogin.FlatStyle = FlatStyle.Flat;
+            btnLogin.Font = new Font("Tahoma", 16.3018875F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnLogin.ForeColor = SystemColors.ActiveCaptionText;
+            btnLogin.Location = new Point(202, 311);
+            btnLogin.Name = "btnLogin";
+            btnLogin.Size = new Size(198, 56);
+            btnLogin.TabIndex = 4;
+            btnLogin.Text = "Login";
+            btnLogin.UseVisualStyleBackColor = false;
+            btnLogin.Click += btnLogin_Click;
+            // 
+            // txtUserName
+            // 
+            txtUserName.Font = new Font("Tahoma", 23.7735844F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtUserName.ForeColor = Color.Black;
+            txtUserName.Location = new Point(67, 138);
+            txtUserName.Name = "txtUserName";
+            txtUserName.Size = new Size(506, 50);
+            txtUserName.TabIndex = 2;
             // 
             // btnAdminLoginButton
             // 
@@ -129,13 +148,12 @@
             btnAdminLoginButton.FlatStyle = FlatStyle.Flat;
             btnAdminLoginButton.Font = new Font("Tahoma", 16.3018875F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAdminLoginButton.ForeColor = SystemColors.ActiveCaptionText;
-            btnAdminLoginButton.Location = new Point(207, 305);
+            btnAdminLoginButton.Location = new Point(424, 447);
             btnAdminLoginButton.Name = "btnAdminLoginButton";
             btnAdminLoginButton.Size = new Size(198, 56);
             btnAdminLoginButton.TabIndex = 1;
             btnAdminLoginButton.Text = "Login";
             btnAdminLoginButton.UseVisualStyleBackColor = false;
-            btnAdminLoginButton.Click += btnAdminLoginButton_Click;
             // 
             // label2
             // 
@@ -143,23 +161,22 @@
             label2.AutoSize = true;
             label2.Font = new Font("Tahoma", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = SystemColors.ActiveCaptionText;
-            label2.Location = new Point(128, 25);
+            label2.Location = new Point(48, 32);
             label2.Name = "label2";
-            label2.Size = new Size(359, 64);
+            label2.Size = new Size(525, 64);
             label2.TabIndex = 0;
-            label2.Text = "Admin Login";
+            label2.Text = "Cafe't Bahay Login";
             // 
-            // AdminLoginForm
+            // NewLogin
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DimGray;
-            ClientSize = new Size(891, 527);
+            ClientSize = new Size(867, 541);
             Controls.Add(panel2);
             Controls.Add(panel1);
-            MaximizeBox = false;
-            Name = "AdminLoginForm";
-            Text = "AdminLoginForm";
+            Name = "NewLogin";
+            Text = "LoginForm";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
@@ -173,11 +190,12 @@
         private Label label1;
         private Panel panel2;
         private TextBox textBox2;
-        private TextBox txtAdminUserName;
+        private TextBox txtUserName;
         private Button btnAdminLoginButton;
         private Label label2;
-        private TextBox txtAdminPassword;
-        private Label label4;
+        private Button btnLogin;
+        private TextBox txtPassword;
         private Label label3;
+        private Label label4;
     }
 }
