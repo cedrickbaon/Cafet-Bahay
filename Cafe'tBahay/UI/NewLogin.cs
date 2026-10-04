@@ -10,17 +10,17 @@ using System.Windows.Forms;
 
 namespace UI
 {
-    public partial class CashierLoginForm : Form
+    public partial class NewLogin : Form
     {
-        public CashierLoginForm()
+        public NewLogin()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnLogin_Click(object sender, EventArgs e)
         {
-            string username = txtCashierUserName.Text;
-            string password = txtCashierPassword.Text;
+            string username = txtUserName.Text;
+            string password = txtPassword.Text;
 
 
             if (username == "cashier" && password == "cashier123")
@@ -32,7 +32,7 @@ namespace UI
             else
             {
                 MessageBox.Show("Invalid cashier credentials");
-                txtCashierPassword.Clear();
+                txtPassword.Clear();
             }
         }
     }
