@@ -22,17 +22,24 @@ namespace UI
             string username = txtUserName.Text;
             string password = txtPassword.Text;
 
-
             if (username == "cashier" && password == "cashier123")
             {
                 Cashier_Dashboard cashierDash = new Cashier_Dashboard();
                 cashierDash.Show();
-                this.Close();
+                this.Hide();
+            }
+
+            else if (username == "admin" && password == "admin123")
+            {
+                AdminDashboard adminDash = new AdminDashboard();
+                adminDash.Show();
+                this.Hide();
             }
             else
             {
-                MessageBox.Show("Invalid cashier credentials");
+                MessageBox.Show("Invalid username or password.");
                 txtPassword.Clear();
+                txtUserName.Focus();
             }
         }
     }
