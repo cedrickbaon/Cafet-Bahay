@@ -4,14 +4,22 @@ namespace UI
     {
         /// <summary>
         ///  The main entry point for the application.
-        /// </summary>
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new NewLogin());
+
+            // Create a standard Form, add your UserControl to it, and run it
+            Form mainForm = new Form();
+            mainForm.Text = "User Role Management Test";
+            mainForm.Width = 800;
+            mainForm.Height = 600;
+
+            ucUserRole myUserControl = new ucUserRole();
+            myUserControl.Dock = DockStyle.Fill; // Fill the whole form
+            mainForm.Controls.Add(myUserControl);
+
+            Application.Run(mainForm);
         }
     }
 }
