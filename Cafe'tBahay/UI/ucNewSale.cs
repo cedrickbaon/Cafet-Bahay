@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace UI
 {
-    public partial class usInventory_Sales : UserControl
+    public partial class ucNewSale : UserControl
     {
-        public usInventory_Sales()
+        public ucNewSale()
         {
             InitializeComponent();
         }
