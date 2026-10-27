@@ -24,15 +24,14 @@ namespace UI
             ShowPage(new ucNewSales());
 
         }
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            ShowPage(new ucProductSearch());
+        }
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            ShowPage(new ucProductSearch());
         }
     }
 }

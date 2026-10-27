@@ -31,6 +31,10 @@
         private void InitializeComponent()
         {
             pnlAddItem = new Panel();
+            txtSupplierNotesRemarks = new TextBox();
+            lblnoteremarksupplier = new Label();
+            txtSupplierAddress = new TextBox();
+            label1 = new Label();
             txtProductSupplied = new TextBox();
             txtEmailSuppiler = new TextBox();
             txtContactPerson = new TextBox();
@@ -47,14 +51,16 @@
             txtSupplierName = new TextBox();
             lblAddOrEdit = new Label();
             dtgSupplierItems = new DataGridView();
+            btnEditSupplier = new Button();
             colSupplierId = new DataGridViewTextBoxColumn();
             colProductSupplied = new DataGridViewTextBoxColumn();
             colSupplierName = new DataGridViewTextBoxColumn();
             colContactPerson = new DataGridViewTextBoxColumn();
             colPhone = new DataGridViewTextBoxColumn();
             colEmail = new DataGridViewTextBoxColumn();
+            colSupplierAddress = new DataGridViewTextBoxColumn();
             colStatus = new DataGridViewTextBoxColumn();
-            btnEditSupplier = new Button();
+            colSupplierNotesRemarks = new DataGridViewTextBoxColumn();
             pnlAddItem.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtgSupplierItems).BeginInit();
             SuspendLayout();
@@ -62,6 +68,10 @@
             // pnlAddItem
             // 
             pnlAddItem.BackColor = Color.Silver;
+            pnlAddItem.Controls.Add(txtSupplierNotesRemarks);
+            pnlAddItem.Controls.Add(lblnoteremarksupplier);
+            pnlAddItem.Controls.Add(txtSupplierAddress);
+            pnlAddItem.Controls.Add(label1);
             pnlAddItem.Controls.Add(txtProductSupplied);
             pnlAddItem.Controls.Add(txtEmailSuppiler);
             pnlAddItem.Controls.Add(txtContactPerson);
@@ -77,11 +87,47 @@
             pnlAddItem.Controls.Add(btnSaveChanges);
             pnlAddItem.Controls.Add(txtSupplierName);
             pnlAddItem.Controls.Add(lblAddOrEdit);
-            pnlAddItem.Location = new Point(1029, 54);
+            pnlAddItem.Location = new Point(1191, 38);
             pnlAddItem.Name = "pnlAddItem";
-            pnlAddItem.Size = new Size(377, 663);
+            pnlAddItem.Size = new Size(377, 854);
             pnlAddItem.TabIndex = 9;
             pnlAddItem.Visible = false;
+            // 
+            // txtSupplierNotesRemarks
+            // 
+            txtSupplierNotesRemarks.Font = new Font("Tahoma", 14.2641506F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtSupplierNotesRemarks.Location = new Point(18, 717);
+            txtSupplierNotesRemarks.Name = "txtSupplierNotesRemarks";
+            txtSupplierNotesRemarks.Size = new Size(335, 33);
+            txtSupplierNotesRemarks.TabIndex = 19;
+            // 
+            // lblnoteremarksupplier
+            // 
+            lblnoteremarksupplier.AutoSize = true;
+            lblnoteremarksupplier.Font = new Font("Tahoma", 14.2641506F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblnoteremarksupplier.Location = new Point(18, 689);
+            lblnoteremarksupplier.Name = "lblnoteremarksupplier";
+            lblnoteremarksupplier.Size = new Size(249, 25);
+            lblnoteremarksupplier.TabIndex = 20;
+            lblnoteremarksupplier.Text = "Notes/Remarks (optional)";
+            // 
+            // txtSupplierAddress
+            // 
+            txtSupplierAddress.Font = new Font("Tahoma", 14.2641506F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtSupplierAddress.Location = new Point(17, 529);
+            txtSupplierAddress.Name = "txtSupplierAddress";
+            txtSupplierAddress.Size = new Size(335, 33);
+            txtSupplierAddress.TabIndex = 17;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Tahoma", 14.2641506F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Location = new Point(17, 501);
+            label1.Name = "label1";
+            label1.Size = new Size(93, 25);
+            label1.TabIndex = 18;
+            label1.Text = "Address:";
             // 
             // txtProductSupplied
             // 
@@ -130,7 +176,7 @@
             btnCancel.BackColor = SystemColors.ButtonFace;
             btnCancel.FlatStyle = FlatStyle.Flat;
             btnCancel.Font = new Font("Tahoma", 14.2641506F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnCancel.Location = new Point(199, 592);
+            btnCancel.Location = new Point(196, 790);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(120, 37);
             btnCancel.TabIndex = 12;
@@ -143,7 +189,7 @@
             // 
             cmbStatus.Font = new Font("Tahoma", 14.2641506F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cmbStatus.FormattingEnabled = true;
-            cmbStatus.Location = new Point(17, 530);
+            cmbStatus.Location = new Point(17, 617);
             cmbStatus.Name = "cmbStatus";
             cmbStatus.Size = new Size(335, 33);
             cmbStatus.TabIndex = 5;
@@ -153,7 +199,7 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Tahoma", 14.2641506F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label9.Location = new Point(18, 502);
+            label9.Location = new Point(18, 589);
             label9.Name = "label9";
             label9.Size = new Size(77, 25);
             label9.TabIndex = 10;
@@ -165,9 +211,9 @@
             label8.Font = new Font("Tahoma", 14.2641506F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label8.Location = new Point(18, 420);
             label8.Name = "label8";
-            label8.Size = new Size(70, 25);
+            label8.Size = new Size(144, 25);
             label8.TabIndex = 8;
-            label8.Text = "Email:";
+            label8.Text = "Email Address";
             // 
             // label7
             // 
@@ -175,9 +221,9 @@
             label7.Font = new Font("Tahoma", 14.2641506F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label7.Location = new Point(11, 338);
             label7.Name = "label7";
-            label7.Size = new Size(77, 25);
+            label7.Size = new Size(172, 25);
             label7.TabIndex = 6;
-            label7.Text = "Phone:";
+            label7.Text = "Contact Number:";
             // 
             // label6
             // 
@@ -204,7 +250,7 @@
             btnSaveChanges.BackColor = SystemColors.ButtonFace;
             btnSaveChanges.FlatStyle = FlatStyle.Flat;
             btnSaveChanges.Font = new Font("Tahoma", 14.2641506F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnSaveChanges.Location = new Point(51, 592);
+            btnSaveChanges.Location = new Point(48, 790);
             btnSaveChanges.Name = "btnSaveChanges";
             btnSaveChanges.Size = new Size(120, 37);
             btnSaveChanges.TabIndex = 15;
@@ -235,62 +281,13 @@
             // 
             dtgSupplierItems.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dtgSupplierItems.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dtgSupplierItems.Columns.AddRange(new DataGridViewColumn[] { colSupplierId, colProductSupplied, colSupplierName, colContactPerson, colPhone, colEmail, colStatus });
+            dtgSupplierItems.Columns.AddRange(new DataGridViewColumn[] { colSupplierId, colProductSupplied, colSupplierName, colContactPerson, colPhone, colEmail, colSupplierAddress, colStatus, colSupplierNotesRemarks });
             dtgSupplierItems.Location = new Point(48, 38);
             dtgSupplierItems.Name = "dtgSupplierItems";
             dtgSupplierItems.RowHeadersWidth = 45;
-            dtgSupplierItems.Size = new Size(958, 714);
+            dtgSupplierItems.Size = new Size(1121, 714);
             dtgSupplierItems.TabIndex = 8;
             dtgSupplierItems.CellClick += dtgSupplierItems_CellClick;
-            // 
-            // colSupplierId
-            // 
-            colSupplierId.HeaderText = "Supplier ID";
-            colSupplierId.MinimumWidth = 6;
-            colSupplierId.Name = "colSupplierId";
-            colSupplierId.ReadOnly = true;
-            // 
-            // colProductSupplied
-            // 
-            colProductSupplied.HeaderText = "Product Supplied";
-            colProductSupplied.MinimumWidth = 6;
-            colProductSupplied.Name = "colProductSupplied";
-            colProductSupplied.ReadOnly = true;
-            // 
-            // colSupplierName
-            // 
-            colSupplierName.HeaderText = "Supplier Name";
-            colSupplierName.MinimumWidth = 6;
-            colSupplierName.Name = "colSupplierName";
-            colSupplierName.ReadOnly = true;
-            // 
-            // colContactPerson
-            // 
-            colContactPerson.HeaderText = "Contact Person";
-            colContactPerson.MinimumWidth = 6;
-            colContactPerson.Name = "colContactPerson";
-            colContactPerson.ReadOnly = true;
-            // 
-            // colPhone
-            // 
-            colPhone.HeaderText = "Phone";
-            colPhone.MinimumWidth = 6;
-            colPhone.Name = "colPhone";
-            colPhone.ReadOnly = true;
-            // 
-            // colEmail
-            // 
-            colEmail.HeaderText = "Email";
-            colEmail.MinimumWidth = 6;
-            colEmail.Name = "colEmail";
-            colEmail.ReadOnly = true;
-            // 
-            // colStatus
-            // 
-            colStatus.HeaderText = "Status";
-            colStatus.MinimumWidth = 6;
-            colStatus.Name = "colStatus";
-            colStatus.ReadOnly = true;
             // 
             // btnEditSupplier
             // 
@@ -302,6 +299,76 @@
             btnEditSupplier.Text = "🖉 Edit";
             btnEditSupplier.UseVisualStyleBackColor = true;
             btnEditSupplier.Click += btnEditSupplier_Click;
+            // 
+            // colSupplierId
+            // 
+            colSupplierId.DataPropertyName = "Id";
+            colSupplierId.HeaderText = "Supplier ID";
+            colSupplierId.MinimumWidth = 6;
+            colSupplierId.Name = "colSupplierId";
+            colSupplierId.ReadOnly = true;
+            // 
+            // colProductSupplied
+            // 
+            colProductSupplied.DataPropertyName = "ProductsSupplied";
+            colProductSupplied.HeaderText = "Product Supplied";
+            colProductSupplied.MinimumWidth = 6;
+            colProductSupplied.Name = "colProductSupplied";
+            colProductSupplied.ReadOnly = true;
+            // 
+            // colSupplierName
+            // 
+            colSupplierName.DataPropertyName = "Name";
+            colSupplierName.HeaderText = "Supplier Name";
+            colSupplierName.MinimumWidth = 6;
+            colSupplierName.Name = "colSupplierName";
+            colSupplierName.ReadOnly = true;
+            // 
+            // colContactPerson
+            // 
+            colContactPerson.DataPropertyName = "ContactPerson";
+            colContactPerson.HeaderText = "Contact Person";
+            colContactPerson.MinimumWidth = 6;
+            colContactPerson.Name = "colContactPerson";
+            colContactPerson.ReadOnly = true;
+            // 
+            // colPhone
+            // 
+            colPhone.DataPropertyName = "ContactNumber";
+            colPhone.HeaderText = "Contact Number";
+            colPhone.MinimumWidth = 6;
+            colPhone.Name = "colPhone";
+            colPhone.ReadOnly = true;
+            // 
+            // colEmail
+            // 
+            colEmail.DataPropertyName = "Email";
+            colEmail.HeaderText = "Email Address";
+            colEmail.MinimumWidth = 6;
+            colEmail.Name = "colEmail";
+            colEmail.ReadOnly = true;
+            // 
+            // colSupplierAddress
+            // 
+            colSupplierAddress.DataPropertyName = "Address";
+            colSupplierAddress.HeaderText = "Address";
+            colSupplierAddress.MinimumWidth = 6;
+            colSupplierAddress.Name = "colSupplierAddress";
+            // 
+            // colStatus
+            // 
+            colStatus.DataPropertyName = "Status";
+            colStatus.HeaderText = "Status";
+            colStatus.MinimumWidth = 6;
+            colStatus.Name = "colStatus";
+            colStatus.ReadOnly = true;
+            // 
+            // colSupplierNotesRemarks
+            // 
+            colSupplierNotesRemarks.DataPropertyName = "Notes";
+            colSupplierNotesRemarks.HeaderText = "Notes/Remarks (Optional)";
+            colSupplierNotesRemarks.MinimumWidth = 6;
+            colSupplierNotesRemarks.Name = "colSupplierNotesRemarks";
             // 
             // ucSupplier
             // 
@@ -342,12 +409,18 @@
         private TextBox txtPhoneSupplier;
         private TextBox txtProductSupplied;
         private Label lblProductSupplied;
+        private TextBox txtSupplierNotesRemarks;
+        private Label lblnoteremarksupplier;
+        private TextBox txtSupplierAddress;
+        private Label label1;
         private DataGridViewTextBoxColumn colSupplierId;
         private DataGridViewTextBoxColumn colProductSupplied;
         private DataGridViewTextBoxColumn colSupplierName;
         private DataGridViewTextBoxColumn colContactPerson;
         private DataGridViewTextBoxColumn colPhone;
         private DataGridViewTextBoxColumn colEmail;
+        private DataGridViewTextBoxColumn colSupplierAddress;
         private DataGridViewTextBoxColumn colStatus;
+        private DataGridViewTextBoxColumn colSupplierNotesRemarks;
     }
 }

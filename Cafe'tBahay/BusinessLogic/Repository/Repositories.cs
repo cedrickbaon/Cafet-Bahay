@@ -379,7 +379,7 @@ namespace BusinessLogic.Repository
                     @"SELECT
                         [Supplier ID] AS Id,
                         [Supplier Name] AS Name,
-                        [Products Supplied] AS ProductsSupplied,
+                        [Product Supplied] AS ProductsSupplied,
                         [Contact Person] AS ContactPerson,
                         [Contact Number] AS ContactNumber,
                         [Email Address] AS Email,

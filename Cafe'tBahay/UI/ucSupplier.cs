@@ -1,19 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Model;
 
 namespace UI
 {
     public partial class ucSupplier : UserControl
     {
         private bool isEditMode = false;
-        private int nextSupplierId = 1;
+        private int currentSupplierId = 0;
 
         public ucSupplier()
         {
@@ -23,10 +18,25 @@ namespace UI
             cmbStatus.Items.Add("Active");
             cmbStatus.Items.Add("Inactive");
 
+            dtgSupplierItems.AutoGenerateColumns = false;
             dtgSupplierItems.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dtgSupplierItems.MultiSelect = false;
+            dtgSupplierItems.CellClick += dtgSupplierItems_CellClick;
 
+            LoadSuppliers();
             ResetToAddMode();
+        }
+
+        private void LoadSuppliers()
+        {
+            try
+            {
+                dtgSupplierItems.DataSource = AppServices.Suppliers.GetAll();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, "Error loading suppliers: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -48,7 +58,8 @@ namespace UI
             txtContactPerson.ReadOnly = isReadOnly;
             txtPhoneSupplier.ReadOnly = isReadOnly;
             txtEmailSuppiler.ReadOnly = isReadOnly;
-            if (txtProductSupplied != null) txtProductSupplied.ReadOnly = isReadOnly;
+            txtSupplierAddress.ReadOnly = isReadOnly;
+            txtSupplierNotesRemarks.ReadOnly = isReadOnly;
 
             cmbStatus.Enabled = !isReadOnly;
 
@@ -59,6 +70,7 @@ namespace UI
         private void ResetToAddMode()
         {
             isEditMode = false;
+            currentSupplierId = 0;
             lblAddOrEdit.Text = "Add Supplier";
 
             SetFieldsReadOnly(false);
@@ -67,7 +79,8 @@ namespace UI
             txtContactPerson.Clear();
             txtPhoneSupplier.Clear();
             txtEmailSuppiler.Clear();
-            if (txtProductSupplied != null) txtProductSupplied.Clear();
+            txtSupplierAddress.Clear();
+            txtSupplierNotesRemarks.Clear();
             cmbStatus.SelectedIndex = -1;
 
             dtgSupplierItems.ClearSelection();
@@ -76,17 +89,25 @@ namespace UI
 
         private void PopulateFieldsFromSelectedRow()
         {
+           
             if (dtgSupplierItems.CurrentRow != null && !dtgSupplierItems.CurrentRow.IsNewRow)
             {
-                var row = dtgSupplierItems.CurrentRow;
-                if (txtProductSupplied != null) txtProductSupplied.Text = row.Cells[1].Value?.ToString();
-                txtSupplierName.Text = row.Cells[2].Value?.ToString();
-                txtContactPerson.Text = row.Cells[3].Value?.ToString();
-                txtPhoneSupplier.Text = row.Cells[4].Value?.ToString();
-                txtEmailSuppiler.Text = row.Cells[5].Value?.ToString();
-                cmbStatus.Text = row.Cells[6].Value?.ToString();
+                var rowView = dtgSupplierItems.CurrentRow.DataBoundItem as DataRowView;
+                if (rowView != null)
+                {
+                    currentSupplierId = Convert.ToInt32(rowView["Id"]);
+                    txtSupplierName.Text = rowView["Name"]?.ToString();
+                    txtProductSupplied.Text = rowView["ProductsSupplied"]?.ToString();
+                    txtContactPerson.Text = rowView["ContactPerson"]?.ToString();
+                    txtPhoneSupplier.Text = rowView["ContactNumber"]?.ToString();
+                    txtEmailSuppiler.Text = rowView["Email"]?.ToString();
+                    txtSupplierAddress.Text = rowView["Address"]?.ToString();
+                    cmbStatus.Text = rowView["Status"]?.ToString();
+                    txtSupplierNotesRemarks.Text = rowView["Notes"]?.ToString();
+                }
             }
         }
+        
 
         private void dtgSupplierItems_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -114,16 +135,8 @@ namespace UI
             PopulateFieldsFromSelectedRow();
             SetFieldsReadOnly(false);
 
-            if (txtProductSupplied != null)
-            {
-                txtProductSupplied.Focus();
-                txtProductSupplied.SelectAll();
-            }
-            else
-            {
-                txtSupplierName.Focus();
-                txtSupplierName.SelectAll();
-            }
+            txtSupplierName.Focus();
+            txtSupplierName.SelectAll();
         }
 
         private void btnSaveChanges_Click(object sender, EventArgs e)
@@ -158,47 +171,40 @@ namespace UI
                 cmbStatus.Focus();
                 return;
             }
-            if (txtProductSupplied != null && string.IsNullOrWhiteSpace(txtProductSupplied.Text))
-            {
-                MessageBox.Show("Please enter the Product Supplied.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtProductSupplied.Focus();
-                return;
-            }
 
-            if (isEditMode)
+            try
             {
-                if (dtgSupplierItems.CurrentRow != null)
+                var supplier = new Supplier
                 {
-                    var row = dtgSupplierItems.CurrentRow;
-                    if (txtProductSupplied != null) row.Cells[1].Value = txtProductSupplied.Text.Trim();
-                    row.Cells[2].Value = txtSupplierName.Text.Trim();
-                    row.Cells[3].Value = txtContactPerson.Text.Trim();
-                    row.Cells[4].Value = txtPhoneSupplier.Text.Trim();
-                    row.Cells[5].Value = txtEmailSuppiler.Text.Trim();
-                    row.Cells[6].Value = cmbStatus.Text.Trim();
+                    Id = currentSupplierId,
+                    Name = txtSupplierName.Text.Trim(),
+                    ProductsSupplied = "", // Not used in this layout
+                    ContactPerson = txtContactPerson.Text.Trim(),
+                    ContactNumber = txtPhoneSupplier.Text.Trim(),
+                    Email = txtEmailSuppiler.Text.Trim(),
+                    Address = txtSupplierAddress.Text.Trim(),
+                    Status = cmbStatus.Text.Trim(),
+                    Notes = txtSupplierNotesRemarks.Text.Trim()
+                }; 
 
+                if (isEditMode)
+                {
+                    AppServices.Suppliers.Update(supplier);
                     MessageBox.Show("Supplier updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+                else
+                {
+                    AppServices.Suppliers.Add(supplier);
+                    MessageBox.Show("New supplier added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+                LoadSuppliers();
+                ResetToAddMode();
             }
-            else
+            catch (Exception ex)
             {
-                string newId = $"SUPP-{nextSupplierId:D3}";
-                nextSupplierId++;
-
-                dtgSupplierItems.Rows.Add(
-                    newId,
-                    txtProductSupplied != null ? txtProductSupplied.Text.Trim() : "",
-                    txtSupplierName.Text.Trim(),
-                    txtContactPerson.Text.Trim(),
-                    txtPhoneSupplier.Text.Trim(),
-                    txtEmailSuppiler.Text.Trim(),
-                    cmbStatus.Text.Trim()
-                );
-
-                MessageBox.Show("New supplier added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(this, "Error saving supplier: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            ResetToAddMode();
         }
 
         private void btnCancel_Click_1(object sender, EventArgs e)
