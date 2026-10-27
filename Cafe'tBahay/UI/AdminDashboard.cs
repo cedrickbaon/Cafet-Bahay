@@ -1,37 +1,59 @@
 ﻿using System;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace UI
 {
     public partial class AdminDashboard : Form
     {
-        private ucSupplier supplierPage = new ucSupplier();
-        private usInventory_Sales reportsPage = new usInventory_Sales();
+        private readonly ucSupplier supplierPage =
+            new ucSupplier();
+
+        private readonly usInventory_Sales reportsPage =
+            new usInventory_Sales();
 
         public AdminDashboard()
         {
             InitializeComponent();
         }
 
-        private void btnSupplier_Click(object sender, EventArgs e)
+        protected override void OnShown(EventArgs e)
         {
-            pnlContent.Controls.Clear();
-            supplierPage.Dock = DockStyle.Fill;
-            pnlContent.Controls.Add(supplierPage);
+            base.OnShown(e);
+
+            try
+            {
+                // Confirms the signed-in account is still an Admin.
+                AppServices.Users.GetAll();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, ex.Message);
+                Close();
+            }
         }
-        private void btnInventoryandSales_Click_1(object sender, EventArgs e)
+
+        private void ShowPage(UserControl page)
         {
             pnlContent.Controls.Clear();
-            reportsPage.Dock = DockStyle.Fill;
-            pnlContent.Controls.Add(reportsPage);
+
+            page.Dock = DockStyle.Fill;
+            pnlContent.Controls.Add(page);
+
+            page.Show();
+        }
+
+        private void btnSupplier_Click(
+            object sender,
+            EventArgs e)
+        {
+            ShowPage(supplierPage);
+        }
+
+        private void btnInventoryandSales_Click_1(
+            object sender,
+            EventArgs e)
+        {
+            ShowPage(reportsPage);
         }
     }
 }
