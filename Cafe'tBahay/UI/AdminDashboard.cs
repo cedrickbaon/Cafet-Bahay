@@ -5,10 +5,10 @@ namespace UI
 {
     public partial class AdminDashboard : Form
     {
-
-        public AdminDashboard()
+            public AdminDashboard()
         {
             InitializeComponent();
+
         }
 
         protected override void OnShown(EventArgs e)
@@ -41,14 +41,37 @@ namespace UI
             object sender,
             EventArgs e)
         {
-            ShowPage(supplierPage);
+            ShowPage(new ucSupplier());
         }
 
-        private void btnInventoryandSales_Click_1(
-            object sender,
-            EventArgs e)
+        private void btnInventoryandSales_Click_1(object sender, EventArgs e)
         {
-            ShowPage(reportsPage);
+            ShowPage(new ucInventoryandSales());
+        }
+
+        private void btnCategory_Click(object sender, EventArgs e)
+        {
+            ShowPage(new ucCategory());
+        }
+
+        private void btnUserRole_Click(object sender, EventArgs e)
+        {
+            ShowPage(new ucUserRole());
+        }
+
+        private void btnProductMaintenance_Click(object sender, EventArgs e)
+        {
+            ShowPage(new UcProductMaintenance());
+        }
+
+        private void btnProductSearch_Click(object sender, EventArgs e)
+        {
+            ShowPage(new ucProductSearch());
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

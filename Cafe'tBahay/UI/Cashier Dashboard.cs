@@ -9,5 +9,30 @@ namespace UI
         {
             InitializeComponent();
         }
+
+        private void ShowPage(UserControl page)
+        {
+            pnlCashier.Controls.Clear();
+
+            page.Dock = DockStyle.Fill;
+            pnlCashier.Controls.Add(page);
+
+            page.Show();
+        }
+        private void btnNewSale_Click(object sender, EventArgs e)
+        {
+            ShowPage(new ucNewSales());
+
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            ShowPage(new ucProductSearch());
+        }
     }
 }

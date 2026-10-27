@@ -37,6 +37,7 @@
             btnLogout = new Button();
             panelHeader = new Panel();
             lblTitle = new Label();
+            pnlCashier = new Panel();
             panelSidebar.SuspendLayout();
             SuspendLayout();
             // 
@@ -51,7 +52,7 @@
             panelSidebar.Dock = DockStyle.Left;
             panelSidebar.Location = new Point(0, 68);
             panelSidebar.Name = "panelSidebar";
-            panelSidebar.Size = new Size(219, 527);
+            panelSidebar.Size = new Size(219, 894);
             panelSidebar.TabIndex = 0;
             // 
             // lblLogo
@@ -86,6 +87,7 @@
             btnNewSale.TabIndex = 2;
             btnNewSale.Text = "New Sale";
             btnNewSale.UseVisualStyleBackColor = false;
+            btnNewSale.Click += btnNewSale_Click;
             // 
             // btnSearch
             // 
@@ -97,6 +99,7 @@
             btnSearch.TabIndex = 3;
             btnSearch.Text = "Product Search";
             btnSearch.UseVisualStyleBackColor = false;
+            btnSearch.Click += btnSearch_Click;
             // 
             // btnLogout
             // 
@@ -108,13 +111,14 @@
             btnLogout.TabIndex = 4;
             btnLogout.Text = "Logout";
             btnLogout.UseVisualStyleBackColor = false;
+            btnLogout.Click += btnLogout_Click;
             // 
             // panelHeader
             // 
             panelHeader.Dock = DockStyle.Top;
             panelHeader.Location = new Point(0, 0);
             panelHeader.Name = "panelHeader";
-            panelHeader.Size = new Size(1050, 68);
+            panelHeader.Size = new Size(1487, 68);
             panelHeader.TabIndex = 1;
             // 
             // lblTitle
@@ -127,11 +131,20 @@
             lblTitle.TabIndex = 2;
             lblTitle.Text = "Cashier Dashboard";
             // 
+            // pnlCashier
+            // 
+            pnlCashier.BackColor = SystemColors.ButtonHighlight;
+            pnlCashier.Location = new Point(225, 68);
+            pnlCashier.Name = "pnlCashier";
+            pnlCashier.Size = new Size(1262, 894);
+            pnlCashier.TabIndex = 3;
+            // 
             // CashierDashboard
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1050, 595);
+            ClientSize = new Size(1487, 962);
+            Controls.Add(pnlCashier);
             Controls.Add(panelSidebar);
             Controls.Add(panelHeader);
             Controls.Add(lblTitle);
@@ -143,5 +156,7 @@
             ResumeLayout(false);
             PerformLayout();
         }
+
+        private Panel pnlCashier;
     }
 }

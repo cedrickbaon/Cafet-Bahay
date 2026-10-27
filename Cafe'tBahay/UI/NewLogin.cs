@@ -29,7 +29,7 @@ namespace UI
                 if (string.Equals(user.Role, "Admin", StringComparison.OrdinalIgnoreCase))
                     dashboard = new AdminDashboard();
                 else
-                    dashboard = new Cashier_Dashboard();
+                    dashboard = new CashierDashboard();
 
                 using (dashboard)
                 {
@@ -66,6 +66,11 @@ namespace UI
             {
                 btnLogin.Enabled = true;
             }
+        }
+
+        private void txtPassword_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

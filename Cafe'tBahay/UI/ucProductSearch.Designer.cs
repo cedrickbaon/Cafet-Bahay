@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            label1 = new Label();
-            label2 = new Label();
-            textBox1 = new TextBox();
-            comboBox1 = new ComboBox();
-            button1 = new Button();
             button2 = new Button();
+            button1 = new Button();
+            comboBox1 = new ComboBox();
+            textBox1 = new TextBox();
+            label2 = new Label();
+            label1 = new Label();
             dataGridView1 = new DataGridView();
             colProdSearchProductID = new DataGridViewTextBoxColumn();
             colProdSearchProductName = new DataGridViewTextBoxColumn();
@@ -60,25 +60,34 @@
             panel1.Size = new Size(1376, 191);
             panel1.TabIndex = 0;
             // 
-            // label1
+            // button2
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 14.2641506F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(17, 85);
-            label1.Name = "label1";
-            label1.Size = new Size(173, 30);
-            label1.TabIndex = 0;
-            label1.Text = "Search Products: ";
+            button2.Font = new Font("Segoe UI", 14.2641506F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button2.Location = new Point(1140, 79);
+            button2.Name = "button2";
+            button2.Size = new Size(129, 41);
+            button2.TabIndex = 5;
+            button2.Text = "Clear";
+            button2.UseVisualStyleBackColor = true;
             // 
-            // label2
+            // button1
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 14.2641506F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(538, 84);
-            label2.Name = "label2";
-            label2.Size = new Size(158, 30);
-            label2.TabIndex = 1;
-            label2.Text = "Category Filter: ";
+            button1.Font = new Font("Segoe UI", 14.2641506F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button1.Location = new Point(994, 79);
+            button1.Name = "button1";
+            button1.Size = new Size(129, 41);
+            button1.TabIndex = 4;
+            button1.Text = "Search";
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // comboBox1
+            // 
+            comboBox1.Font = new Font("Segoe UI", 14.2641506F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(643, 82);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(316, 38);
+            comboBox1.TabIndex = 3;
             // 
             // textBox1
             // 
@@ -90,34 +99,25 @@
             textBox1.TabIndex = 2;
             textBox1.Text = "Enter Product name or Id...";
             // 
-            // comboBox1
+            // label2
             // 
-            comboBox1.Font = new Font("Segoe UI", 14.2641506F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(684, 79);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(316, 38);
-            comboBox1.TabIndex = 3;
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 14.2641506F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.Location = new Point(496, 85);
+            label2.Name = "label2";
+            label2.Size = new Size(158, 30);
+            label2.TabIndex = 1;
+            label2.Text = "Category Filter: ";
             // 
-            // button1
+            // label1
             // 
-            button1.Font = new Font("Segoe UI", 14.2641506F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button1.Location = new Point(1044, 80);
-            button1.Name = "button1";
-            button1.Size = new Size(129, 41);
-            button1.TabIndex = 4;
-            button1.Text = "Search";
-            button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            button2.Font = new Font("Segoe UI", 14.2641506F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button2.Location = new Point(1218, 80);
-            button2.Name = "button2";
-            button2.Size = new Size(129, 41);
-            button2.TabIndex = 5;
-            button2.Text = "Clear";
-            button2.UseVisualStyleBackColor = true;
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 14.2641506F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Location = new Point(17, 85);
+            label1.Name = "label1";
+            label1.Size = new Size(173, 30);
+            label1.TabIndex = 0;
+            label1.Text = "Search Products: ";
             // 
             // dataGridView1
             // 
@@ -127,7 +127,7 @@
             dataGridView1.Location = new Point(17, 210);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 45;
-            dataGridView1.Size = new Size(1340, 592);
+            dataGridView1.Size = new Size(1106, 592);
             dataGridView1.TabIndex = 1;
             // 
             // colProdSearchProductID
@@ -173,7 +173,7 @@
             Controls.Add(dataGridView1);
             Controls.Add(panel1);
             Name = "ucProductSearch";
-            Size = new Size(1376, 819);
+            Size = new Size(1290, 819);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();

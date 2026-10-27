@@ -5,10 +5,7 @@ namespace UI
 {
     internal static class AppServices
     {
-        private const string ConnectionString =
-    @"Data Source=.\SQLEXPRESS;" +
-    @"Initial Catalog=CafeBahay;" +
-    @"Integrated Security=True;";
+        public static string ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=CafetBahayDB;Integrated Security=True";
 
         internal static readonly SessionContext Session =
             new SessionContext();

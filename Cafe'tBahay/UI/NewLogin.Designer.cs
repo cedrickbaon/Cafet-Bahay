@@ -112,6 +112,7 @@
             txtPassword.Name = "txtPassword";
             txtPassword.Size = new Size(506, 50);
             txtPassword.TabIndex = 5;
+            txtPassword.TextChanged += txtPassword_TextChanged;
             // 
             // btnLogin
             // 

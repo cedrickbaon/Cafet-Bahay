@@ -173,6 +173,7 @@
             btnCategory.TabIndex = 5;
             btnCategory.Text = "Category ";
             btnCategory.UseVisualStyleBackColor = true;
+            btnCategory.Click += btnCategory_Click;
             // 
             // btnUserRole
             // 
@@ -185,6 +186,7 @@
             btnUserRole.TabIndex = 6;
             btnUserRole.Text = "User Role Management";
             btnUserRole.UseVisualStyleBackColor = true;
+            btnUserRole.Click += btnUserRole_Click;
             // 
             // btnProductMaintenance
             // 
@@ -197,6 +199,7 @@
             btnProductMaintenance.TabIndex = 7;
             btnProductMaintenance.Text = "Product Maintenance";
             btnProductMaintenance.UseVisualStyleBackColor = true;
+            btnProductMaintenance.Click += btnProductMaintenance_Click;
             // 
             // btnProductSearch
             // 
@@ -209,6 +212,7 @@
             btnProductSearch.TabIndex = 8;
             btnProductSearch.Text = "Product Search";
             btnProductSearch.UseVisualStyleBackColor = true;
+            btnProductSearch.Click += btnProductSearch_Click;
             // 
             // btnInventoryandSales
             // 
@@ -234,6 +238,7 @@
             btnLogout.TabIndex = 10;
             btnLogout.Text = "Logout";
             btnLogout.UseVisualStyleBackColor = false;
+            btnLogout.Click += btnLogout_Click;
             // 
             // pnlSidebar
             // 
