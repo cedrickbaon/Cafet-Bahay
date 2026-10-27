@@ -1,120 +1,147 @@
 ﻿namespace UI
 {
-    partial class Cashier_Dashboard
+    partial class CashierDashboard
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        private System.Windows.Forms.Panel panelSidebar;
+        private System.Windows.Forms.Panel panelHeader;
+
+        private System.Windows.Forms.Label lblLogo;
+        private System.Windows.Forms.Label lblSubtitle;
+        private System.Windows.Forms.Label lblTitle;
+
+        private System.Windows.Forms.Button btnNewSale;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Button btnLogout;
+
+
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
             {
                 components.Dispose();
             }
+
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
-            label2 = new Label();
-            label3 = new Label();
-            menuStrip1 = new MenuStrip();
-            button1 = new Button();
-            button2 = new Button();
+            panelSidebar = new Panel();
+            lblLogo = new Label();
+            lblSubtitle = new Label();
+            btnNewSale = new Button();
+            btnSearch = new Button();
+            btnLogout = new Button();
+            panelHeader = new Panel();
+            lblTitle = new Label();
+            panelSidebar.SuspendLayout();
             SuspendLayout();
             // 
-            // label1
+            // panelSidebar
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(333, 9);
-            label1.Name = "label1";
-            label1.Size = new Size(376, 20);
-            label1.TabIndex = 0;
-            label1.Text = "C a f e ’ t  B a h a y     ——    Sales and Inventory System";
+            panelSidebar.BackColor = Color.FromArgb(45, 45, 45);
+            panelSidebar.Controls.Add(lblLogo);
+            panelSidebar.Controls.Add(lblSubtitle);
+            panelSidebar.Controls.Add(btnNewSale);
+            panelSidebar.Controls.Add(btnSearch);
+            panelSidebar.Controls.Add(btnLogout);
+            panelSidebar.Dock = DockStyle.Left;
+            panelSidebar.Location = new Point(0, 68);
+            panelSidebar.Name = "panelSidebar";
+            panelSidebar.Size = new Size(219, 527);
+            panelSidebar.TabIndex = 0;
             // 
-            // label2
+            // lblLogo
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(40, 65);
-            label2.Name = "label2";
-            label2.Size = new Size(364, 20);
-            label2.TabIndex = 1;
-            label2.Text = "Product Search by Product Name or Product Category";
+            lblLogo.AutoSize = true;
+            lblLogo.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            lblLogo.ForeColor = Color.White;
+            lblLogo.Location = new Point(22, 26);
+            lblLogo.Name = "lblLogo";
+            lblLogo.Size = new Size(202, 37);
+            lblLogo.TabIndex = 0;
+            lblLogo.Text = "CAFÉ'T BAHAY";
             // 
-            // label3
+            // lblSubtitle
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(40, 142);
-            label3.Name = "label3";
-            label3.Size = new Size(118, 20);
-            label3.TabIndex = 2;
-            label3.Text = "Cashiering/Sales";
+            lblSubtitle.AutoSize = true;
+            lblSubtitle.ForeColor = Color.White;
+            lblSubtitle.Location = new Point(22, 60);
+            lblSubtitle.Name = "lblSubtitle";
+            lblSubtitle.Size = new Size(124, 17);
+            lblSubtitle.TabIndex = 1;
+            lblSubtitle.Text = "Cashier POS System";
             // 
-            // menuStrip1
+            // btnNewSale
             // 
-            menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Location = new Point(0, 0);
-            menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(800, 24);
-            menuStrip1.TabIndex = 6;
-            menuStrip1.Text = "menuStrip1";
+            btnNewSale.BackColor = Color.FromArgb(64, 64, 64);
+            btnNewSale.FlatStyle = FlatStyle.Flat;
+            btnNewSale.ForeColor = Color.White;
+            btnNewSale.Location = new Point(22, 110);
+            btnNewSale.Name = "btnNewSale";
+            btnNewSale.Size = new Size(175, 38);
+            btnNewSale.TabIndex = 2;
+            btnNewSale.Text = "New Sale";
+            btnNewSale.UseVisualStyleBackColor = false;
             // 
-            // button1
+            // btnSearch
             // 
-            button1.Location = new Point(40, 99);
-            button1.Name = "button1";
-            button1.Size = new Size(94, 29);
-            button1.TabIndex = 7;
-            button1.Text = "Search";
-            button1.UseVisualStyleBackColor = true;
+            btnSearch.BackColor = Color.FromArgb(64, 64, 64);
+            btnSearch.ForeColor = Color.White;
+            btnSearch.Location = new Point(22, 162);
+            btnSearch.Name = "btnSearch";
+            btnSearch.Size = new Size(175, 38);
+            btnSearch.TabIndex = 3;
+            btnSearch.Text = "Product Search";
+            btnSearch.UseVisualStyleBackColor = false;
             // 
-            // button2
+            // btnLogout
             // 
-            button2.Location = new Point(40, 176);
-            button2.Name = "button2";
-            button2.Size = new Size(94, 29);
-            button2.TabIndex = 8;
-            button2.Text = "Open";
-            button2.UseVisualStyleBackColor = true;
+            btnLogout.BackColor = Color.DarkRed;
+            btnLogout.ForeColor = Color.White;
+            btnLogout.Location = new Point(22, 493);
+            btnLogout.Name = "btnLogout";
+            btnLogout.Size = new Size(175, 38);
+            btnLogout.TabIndex = 4;
+            btnLogout.Text = "Logout";
+            btnLogout.UseVisualStyleBackColor = false;
             // 
-            // Cashier_Dashboard
+            // panelHeader
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            panelHeader.Dock = DockStyle.Top;
+            panelHeader.Location = new Point(0, 0);
+            panelHeader.Name = "panelHeader";
+            panelHeader.Size = new Size(1050, 68);
+            panelHeader.TabIndex = 1;
+            // 
+            // lblTitle
+            // 
+            lblTitle.AutoSize = true;
+            lblTitle.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
+            lblTitle.Location = new Point(245, 21);
+            lblTitle.Name = "lblTitle";
+            lblTitle.Size = new Size(282, 41);
+            lblTitle.TabIndex = 2;
+            lblTitle.Text = "Cashier Dashboard";
+            // 
+            // CashierDashboard
+            // 
+            AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(button2);
-            Controls.Add(button1);
-            Controls.Add(label3);
-            Controls.Add(label2);
-            Controls.Add(label1);
-            Controls.Add(menuStrip1);
-            MainMenuStrip = menuStrip1;
-            Name = "Cashier_Dashboard";
-            Text = "+";
+            ClientSize = new Size(1050, 595);
+            Controls.Add(panelSidebar);
+            Controls.Add(panelHeader);
+            Controls.Add(lblTitle);
+            Name = "CashierDashboard";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Café't Bahay | Cashier Dashboard";
+            panelSidebar.ResumeLayout(false);
+            panelSidebar.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
-
-        #endregion
-
-        private Label label1;
-        private Label label2;
-        private Label label3;
-        private MenuStrip menuStrip1;
-        private Button button1;
-        private Button button2;
     }
 }
