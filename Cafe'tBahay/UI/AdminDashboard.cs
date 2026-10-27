@@ -5,11 +5,6 @@ namespace UI
 {
     public partial class AdminDashboard : Form
     {
-        private readonly ucSupplier supplierPage =
-            new ucSupplier();
-
-        private readonly usInventory_Sales reportsPage =
-            new usInventory_Sales();
 
         public AdminDashboard()
         {

@@ -26,7 +26,7 @@ namespace UI
 
                 Form dashboard;
 
-                if (user.Role == "Admin")
+                if (string.Equals(user.Role, "Admin", StringComparison.OrdinalIgnoreCase))
                     dashboard = new AdminDashboard();
                 else
                     dashboard = new Cashier_Dashboard();
