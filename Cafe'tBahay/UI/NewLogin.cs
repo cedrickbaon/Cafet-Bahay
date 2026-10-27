@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace UI
@@ -15,31 +8,63 @@ namespace UI
         public NewLogin()
         {
             InitializeComponent();
+
+            txtPassword.UseSystemPasswordChar = true;
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
+        private void btnLogin_Click(
+            object sender,
+            EventArgs e)
         {
-            string username = txtUserName.Text;
-            string password = txtPassword.Text;
+            btnLogin.Enabled = false;
 
-            if (username == "cashier" && password == "cashier123")
+            try
             {
-                Cashier_Dashboard cashierDash = new Cashier_Dashboard();
-                cashierDash.Show();
-                this.Hide();
-            }
+                var user = AppServices.Users.Login(
+                    txtUserName.Text,
+                    txtPassword.Text);
 
-            else if (username == "admin" && password == "admin123")
-            {
-                AdminDashboard adminDash = new AdminDashboard();
-                adminDash.Show();
-                this.Hide();
+                Form dashboard;
+
+                if (user.Role == "Admin")
+                    dashboard = new AdminDashboard();
+                else
+                    dashboard = new Cashier_Dashboard();
+
+                using (dashboard)
+                {
+                    Hide();
+
+                    try
+                    {
+                        dashboard.ShowDialog(this);
+                    }
+                    finally
+                    {
+                        AppServices.Users.Logout();
+
+                        Show();
+
+                        txtPassword.Clear();
+                        txtUserName.Focus();
+                    }
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Invalid username or password.");
+                MessageBox.Show(
+                    this,
+                    ex.Message,
+                    "Login failed",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+
                 txtPassword.Clear();
                 txtUserName.Focus();
+            }
+            finally
+            {
+                btnLogin.Enabled = true;
             }
         }
     }
