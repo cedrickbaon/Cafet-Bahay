@@ -50,9 +50,9 @@
             // 
             panelProducts.Controls.Add(lblProduct);
             panelProducts.Controls.Add(dgvProducts);
-            panelProducts.Location = new Point(205, 137);
+            panelProducts.Location = new Point(163, 52);
             panelProducts.Name = "panelProducts";
-            panelProducts.Size = new Size(350, 425);
+            panelProducts.Size = new Size(392, 510);
             panelProducts.TabIndex = 5;
             // 
             // lblProduct
@@ -71,7 +71,7 @@
             dgvProducts.Location = new Point(9, 51);
             dgvProducts.Name = "dgvProducts";
             dgvProducts.RowHeadersWidth = 51;
-            dgvProducts.Size = new Size(324, 340);
+            dgvProducts.Size = new Size(368, 442);
             dgvProducts.TabIndex = 1;
             // 
             // panelCart
@@ -84,9 +84,9 @@
             panelCart.Controls.Add(txtPayment);
             panelCart.Controls.Add(lblChange);
             panelCart.Controls.Add(btnComplete);
-            panelCart.Location = new Point(581, 137);
+            panelCart.Location = new Point(571, 60);
             panelCart.Name = "panelCart";
-            panelCart.Size = new Size(376, 425);
+            panelCart.Size = new Size(386, 502);
             panelCart.TabIndex = 6;
             // 
             // lblOrder
@@ -105,13 +105,13 @@
             dgvCart.Location = new Point(9, 51);
             dgvCart.Name = "dgvCart";
             dgvCart.RowHeadersWidth = 51;
-            dgvCart.Size = new Size(350, 170);
+            dgvCart.Size = new Size(350, 237);
             dgvCart.TabIndex = 1;
             // 
             // lblSubtotal
             // 
             lblSubtotal.AutoSize = true;
-            lblSubtotal.Location = new Point(9, 238);
+            lblSubtotal.Location = new Point(9, 291);
             lblSubtotal.Name = "lblSubtotal";
             lblSubtotal.Size = new Size(95, 17);
             lblSubtotal.TabIndex = 2;
@@ -120,7 +120,7 @@
             // lblTotal
             // 
             lblTotal.AutoSize = true;
-            lblTotal.Location = new Point(9, 272);
+            lblTotal.Location = new Point(9, 325);
             lblTotal.Name = "lblTotal";
             lblTotal.Size = new Size(75, 17);
             lblTotal.TabIndex = 3;
@@ -129,7 +129,7 @@
             // lblPayment
             // 
             lblPayment.AutoSize = true;
-            lblPayment.Location = new Point(9, 306);
+            lblPayment.Location = new Point(9, 359);
             lblPayment.Name = "lblPayment";
             lblPayment.Size = new Size(60, 17);
             lblPayment.TabIndex = 4;
@@ -137,7 +137,7 @@
             // 
             // txtPayment
             // 
-            txtPayment.Location = new Point(88, 302);
+            txtPayment.Location = new Point(88, 355);
             txtPayment.Name = "txtPayment";
             txtPayment.Size = new Size(88, 25);
             txtPayment.TabIndex = 5;
@@ -145,7 +145,7 @@
             // lblChange
             // 
             lblChange.AutoSize = true;
-            lblChange.Location = new Point(9, 340);
+            lblChange.Location = new Point(9, 388);
             lblChange.Name = "lblChange";
             lblChange.Size = new Size(91, 17);
             lblChange.TabIndex = 6;
@@ -155,7 +155,7 @@
             // 
             btnComplete.BackColor = Color.DarkRed;
             btnComplete.ForeColor = Color.White;
-            btnComplete.Location = new Point(9, 382);
+            btnComplete.Location = new Point(9, 428);
             btnComplete.Name = "btnComplete";
             btnComplete.Size = new Size(219, 38);
             btnComplete.TabIndex = 7;
