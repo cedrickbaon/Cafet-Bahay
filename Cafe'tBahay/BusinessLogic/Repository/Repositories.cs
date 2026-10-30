@@ -80,19 +80,13 @@ namespace BusinessLogic.Repository
                 
 
 
-                // ETO AKIN TO
-                bool validPassword = true;
-                // HANGGANG DITO LANG
+               
 
 
-                // CEDRICK PINALTAN KO MUNA NG TRUE PARA LANG MABUKSAN YUNG MGA
-                // PANELS, CHINECK KO LANG KASI KUNG OKAY NA YUNG MGA DESIGNS
+                bool validPassword = PasswordHasher.Verify(
+                  password,
+                  Convert.ToString(row["PasswordHash"]));
 
-                // ETO CODE MO. DITO 
-                //bool validPassword = PasswordHasher.Verify(
-                //  password,
-                //  Convert.ToString(row["PasswordHash"]));
-                //HANGGANG DITO
 
 
                 if (!validPassword)
