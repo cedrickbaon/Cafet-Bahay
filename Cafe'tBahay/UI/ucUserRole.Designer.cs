@@ -37,13 +37,13 @@
             btnUserRoleCancel = new Button();
             cmbUserRoleStatus = new ComboBox();
             label5 = new Label();
-            this.btnUserRoleSaveChanges = new Button();
+            btnUserRoleSaveChanges = new Button();
             label4 = new Label();
             label3 = new Label();
             cmbUserRolePickUserrole = new ComboBox();
             label2 = new Label();
             txtUserRoleAddUserName = new TextBox();
-            this.btnUserRoleEditUser = new Button();
+            btnUserRoleEditUser = new Button();
             textBox1 = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel1.SuspendLayout();
@@ -99,13 +99,13 @@
             panel1.Controls.Add(btnUserRoleCancel);
             panel1.Controls.Add(cmbUserRoleStatus);
             panel1.Controls.Add(label5);
-            panel1.Controls.Add(this.btnUserRoleSaveChanges);
+            panel1.Controls.Add(btnUserRoleSaveChanges);
             panel1.Controls.Add(label4);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(cmbUserRolePickUserrole);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(txtUserRoleAddUserName);
-            panel1.Location = new Point(875, 321);
+            panel1.Location = new Point(859, 333);
             panel1.Name = "panel1";
             panel1.Size = new Size(434, 325);
             panel1.TabIndex = 2;
@@ -141,13 +141,13 @@
             // 
             // btnUserRoleSaveChanges
             // 
-            this.btnUserRoleSaveChanges.Font = new Font("Segoe UI", 14.2641506F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            this.btnUserRoleSaveChanges.Location = new Point(44, 263);
-            this.btnUserRoleSaveChanges.Name = "btnUserRoleSaveChanges";
-            this.btnUserRoleSaveChanges.Size = new Size(159, 39);
-            this.btnUserRoleSaveChanges.TabIndex = 4;
-            this.btnUserRoleSaveChanges.Text = "Save Changes";
-            this.btnUserRoleSaveChanges.UseVisualStyleBackColor = true;
+            btnUserRoleSaveChanges.Font = new Font("Segoe UI", 14.2641506F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnUserRoleSaveChanges.Location = new Point(44, 263);
+            btnUserRoleSaveChanges.Name = "btnUserRoleSaveChanges";
+            btnUserRoleSaveChanges.Size = new Size(159, 39);
+            btnUserRoleSaveChanges.TabIndex = 4;
+            btnUserRoleSaveChanges.Text = "Save Changes";
+            btnUserRoleSaveChanges.UseVisualStyleBackColor = true;
             // 
             // label4
             // 
@@ -183,7 +183,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 19.6981125F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(164, 20);
+            label2.Location = new Point(149, 19);
             label2.Name = "label2";
             label2.Size = new Size(139, 40);
             label2.TabIndex = 1;
@@ -199,13 +199,13 @@
             // 
             // btnUserRoleEditUser
             // 
-            this.btnUserRoleEditUser.Font = new Font("Segoe UI", 14.2641506F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            this.btnUserRoleEditUser.Location = new Point(673, 193);
-            this.btnUserRoleEditUser.Name = "btnUserRoleEditUser";
-            this.btnUserRoleEditUser.Size = new Size(159, 39);
-            this.btnUserRoleEditUser.TabIndex = 3;
-            this.btnUserRoleEditUser.Text = "Edit User";
-            this.btnUserRoleEditUser.UseVisualStyleBackColor = true;
+            btnUserRoleEditUser.Font = new Font("Segoe UI", 14.2641506F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnUserRoleEditUser.Location = new Point(673, 179);
+            btnUserRoleEditUser.Name = "btnUserRoleEditUser";
+            btnUserRoleEditUser.Size = new Size(159, 39);
+            btnUserRoleEditUser.TabIndex = 3;
+            btnUserRoleEditUser.Text = "Edit User";
+            btnUserRoleEditUser.UseVisualStyleBackColor = true;
             // 
             // textBox1
             // 
@@ -222,7 +222,7 @@
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(textBox1);
-            Controls.Add(this.btnUserRoleEditUser);
+            Controls.Add(btnUserRoleEditUser);
             Controls.Add(panel1);
             Controls.Add(label1);
             Controls.Add(dataGridView1);
