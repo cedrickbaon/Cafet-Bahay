@@ -5,7 +5,7 @@ namespace UI
 {
     internal static class AppServices
     {
-        public static string ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=CafetBahayDB;Integrated Security=True";
+        public static string ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=CafetBahay;Integrated Security=True";
         internal static readonly SessionContext Session =
             new SessionContext();
 

@@ -1,8 +1,12 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using Model;
+using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
 using System.Linq;
-using Model;
+using System.Reflection.Emit;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace BusinessLogic.Repository
 {
@@ -31,7 +35,7 @@ namespace BusinessLogic.Repository
                     @"SELECT
                         UserID AS Id,
                         Username,
-                        PasswordHash,
+                        [Password],
                         Role,
                         IsLocked,
                         FailedAttempts
@@ -42,7 +46,6 @@ namespace BusinessLogic.Repository
                 if (table.Rows.Count == 0)
                 {
                     transaction.Commit();
-
                     throw new UnauthorizedAccessException(
                         "Username does not exist.");
                 }
@@ -53,47 +56,26 @@ namespace BusinessLogic.Repository
                 if (Convert.ToBoolean(row["IsLocked"]))
                 {
                     transaction.Commit();
-
                     throw new UnauthorizedAccessException(
                         "Account locked. Contact an Admin.");
                 }
 
-                if (row.IsNull("PasswordHash"))
-                {
-                    transaction.Commit();
-
-                    throw new UnauthorizedAccessException(
-                        "Account needs a password reset. Contact an Admin.");
-                }
-
-                string role =
-                    Convert.ToString(row["Role"]);
+                string role = Convert.ToString(row["Role"]);
 
                 if (role != "Admin" && role != "Cashier")
                 {
                     transaction.Commit();
-
                     throw new UnauthorizedAccessException(
                         "Invalid saved role.");
                 }
 
-                
-
-
-               
-
-
-                bool validPassword = PasswordHasher.Verify(
-                  password,
-                  Convert.ToString(row["PasswordHash"]));
-
-
+                // Plain text password check
+                string storedPassword = row.IsNull("Password") ? string.Empty : Convert.ToString(row["Password"]);
+                bool validPassword = (password == storedPassword);
 
                 if (!validPassword)
                 {
-                    int attempts =
-                        Convert.ToInt32(row["FailedAttempts"]) + 1;
-
+                    int attempts = Convert.ToInt32(row["FailedAttempts"]) + 1;
                     bool locked = attempts >= 3;
 
                     Database.Execute(
@@ -130,8 +112,7 @@ namespace BusinessLogic.Repository
                 return new UserAccount
                 {
                     Id = id,
-                    Username =
-                        Convert.ToString(row["Username"]),
+                    Username = Convert.ToString(row["Username"]),
                     Role = role,
                     FailedAttempts = 0,
                     IsLocked = false
@@ -156,20 +137,20 @@ namespace BusinessLogic.Repository
         }
 
         internal int Create(
-            string username,
-            string passwordHash,
-            string role)
+             string username,
+             string password,
+             string role)
         {
             return Run(true, (connection, transaction) =>
                 Convert.ToInt32(Database.Scalar(
                     connection,
                     transaction,
                     @"INSERT INTO dbo.tblUser
-                        (Username, PasswordHash, Role)
+                        (Username, [Password], Role)
                       OUTPUT INSERTED.UserID
-                      VALUES (@username, @hash, @role)",
+                      VALUES (@username, @password, @role)",
                     "@username", username,
-                    "@hash", passwordHash,
+                    "@password", password,
                     "@role", role)));
         }
 
@@ -268,7 +249,7 @@ namespace BusinessLogic.Repository
 
         internal void ResetPassword(
             int id,
-            string passwordHash)
+            string plainPassword)
         {
             Run(true, (connection, transaction) =>
             {
@@ -276,12 +257,11 @@ namespace BusinessLogic.Repository
                     connection,
                     transaction,
                     @"UPDATE dbo.tblUser
-                      SET PasswordHash = @hash,
-                          [Password] = NULL,
+                      SET [Password] = @password,
                           FailedAttempts = 0,
                           IsLocked = 0
                       WHERE UserID = @id",
-                    "@hash", passwordHash,
+                    "@password", plainPassword,
                     "@id", id));
 
                 return 0;
@@ -290,9 +270,9 @@ namespace BusinessLogic.Repository
 
         internal void Bootstrap(
             string adminUsername,
-            string adminHash,
+            string adminPassword,
             string cashierUsername,
-            string cashierHash)
+            string cashierPassword)
         {
             using (var connection = Db.Open())
             using (var transaction = connection.BeginTransaction(
@@ -301,12 +281,12 @@ namespace BusinessLogic.Repository
                 DataTable users = Database.Table(
                     connection,
                     transaction,
-                    @"SELECT UserID, Username, PasswordHash
+                    @"SELECT UserID, Username, [Password]
                       FROM dbo.tblUser WITH (UPDLOCK, HOLDLOCK)");
 
                 foreach (DataRow row in users.Rows)
                 {
-                    if (!row.IsNull("PasswordHash"))
+                    if (!row.IsNull("Password"))
                         throw new InvalidOperationException(
                             "Initial setup is already closed. Log in as an Admin to reset passwords.");
                 }
@@ -320,8 +300,7 @@ namespace BusinessLogic.Repository
                     )
                     BEGIN
                         UPDATE dbo.tblUser
-                        SET PasswordHash = @hash,
-                            [Password] = NULL,
+                        SET [Password] = @password,
                             Role = @role,
                             FailedAttempts = 0,
                             IsLocked = 0
@@ -330,8 +309,8 @@ namespace BusinessLogic.Repository
                     ELSE
                     BEGIN
                         INSERT INTO dbo.tblUser
-                            (Username, PasswordHash, Role)
-                        VALUES (@username, @hash, @role);
+                            (Username, [Password], Role)
+                        VALUES (@username, @password, @role);
                     END;";
 
                 Database.Execute(
@@ -339,7 +318,7 @@ namespace BusinessLogic.Repository
                     transaction,
                     sql,
                     "@username", adminUsername,
-                    "@hash", adminHash,
+                    "@password", adminPassword,
                     "@role", "Admin");
 
                 Database.Execute(
@@ -347,7 +326,7 @@ namespace BusinessLogic.Repository
                     transaction,
                     sql,
                     "@username", cashierUsername,
-                    "@hash", cashierHash,
+                    "@password", cashierPassword,
                     "@role", "Cashier");
 
                 transaction.Commit();

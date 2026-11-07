@@ -30,8 +30,7 @@ namespace BusinessLogic
                 @"SELECT Role
                   FROM dbo.tblUser WITH (HOLDLOCK)
                   WHERE UserID = @id
-                    AND IsLocked = 0
-                    AND PasswordHash IS NOT NULL",
+                    AND IsLocked = 0",
                 "@id", UserId.Value);
 
             if (table.Rows.Count != 1)
@@ -55,57 +54,6 @@ namespace BusinessLogic
     {
         private const int Iterations = 600000;
 
-        internal static string Hash(string password)
-        {
-            byte[] salt = new byte[16];
-
-            using (var random = RandomNumberGenerator.Create())
-            {
-                random.GetBytes(salt);
-            }
-
-            using (var hash = new Rfc2898DeriveBytes(
-                password,
-                salt,
-                Iterations,
-                HashAlgorithmName.SHA256))
-            {
-                return Iterations + ":"
-                    + Convert.ToBase64String(salt) + ":"
-                    + Convert.ToBase64String(hash.GetBytes(32));
-            }
-        }
-
-        internal static bool Verify(
-            string password,
-            string storedHash)
-        {
-            string[] parts = storedHash.Split(':');
-
-            using (var hash = new Rfc2898DeriveBytes(
-                password,
-                Convert.FromBase64String(parts[1]),
-                int.Parse(parts[0]),
-                HashAlgorithmName.SHA256))
-            {
-                byte[] expected =
-                    Convert.FromBase64String(parts[2]);
-
-                byte[] actual = hash.GetBytes(32);
-
-                int difference =
-                    expected.Length ^ actual.Length;
-
-                for (int i = 0;
-                    i < actual.Length && i < expected.Length;
-                    i++)
-                {
-                    difference |= actual[i] ^ expected[i];
-                }
-
-                return difference == 0;
-            }
-        }
     }
 }
 

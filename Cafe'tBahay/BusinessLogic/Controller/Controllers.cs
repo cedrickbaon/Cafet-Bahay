@@ -140,9 +140,9 @@ namespace BusinessLogic.Controller
         }
 
         public int Create(
-            string username,
-            string password,
-            string role)
+             string username,
+             string password,
+             string role)
         {
             username = Validation.Required(
                 username, "Username", 100);
@@ -152,7 +152,7 @@ namespace BusinessLogic.Controller
 
             return repository.Create(
                 username,
-                PasswordHasher.Hash(password),
+                password,
                 role);
         }
 
@@ -179,7 +179,7 @@ namespace BusinessLogic.Controller
 
             repository.ResetPassword(
                 userId,
-                PasswordHasher.Hash(newPassword));
+                newPassword);
         }
 
         public void InitializeFirstRun(
@@ -205,12 +205,6 @@ namespace BusinessLogic.Controller
 
             Validation.Password(adminPassword);
             Validation.Password(cashierPassword);
-
-            repository.Bootstrap(
-                adminUsername,
-                PasswordHasher.Hash(adminPassword),
-                cashierUsername,
-                PasswordHasher.Hash(cashierPassword));
         }
     }
 
