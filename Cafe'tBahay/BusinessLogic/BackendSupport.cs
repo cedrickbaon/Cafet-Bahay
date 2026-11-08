@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
-using System.Security.Cryptography;
 using BusinessLogic.Repository;
 
 namespace BusinessLogic
@@ -50,11 +49,6 @@ namespace BusinessLogic
         }
     }
 
-    internal static class PasswordHasher
-    {
-        private const int Iterations = 600000;
-
-    }
 }
 
 namespace BusinessLogic.Repository

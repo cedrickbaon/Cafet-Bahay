@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Data;
 using System.Windows.Forms;
 using Model;
@@ -21,10 +21,21 @@ namespace UI
             dtgSupplierItems.AutoGenerateColumns = false;
             dtgSupplierItems.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dtgSupplierItems.MultiSelect = false;
-            dtgSupplierItems.CellClick += dtgSupplierItems_CellClick;
 
             LoadSuppliers();
             ResetToAddMode();
+            // Extra required admin actions without changing the designer.
+            var extra = new FlowLayoutPanel { Dock = DockStyle.Bottom, Height = 37 };
+            UiToolkit.Button(extra, "Deactivate", () => {
+                int id = UiToolkit.Id(UiToolkit.Selected(dtgSupplierItems));
+                AppServices.Suppliers.Deactivate(id); LoadSuppliers(); ResetToAddMode();
+            });
+            UiToolkit.Button(extra, "Delete", () => {
+                int id = UiToolkit.Id(UiToolkit.Selected(dtgSupplierItems));
+                if(MessageBox.Show("Delete this supplier?", "Confirm", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                { AppServices.Suppliers.Delete(id); LoadSuppliers(); ResetToAddMode(); }
+            });
+            pnlAddItem.Controls.Add(extra);
         }
 
         private void LoadSuppliers()
@@ -60,6 +71,7 @@ namespace UI
             txtEmailSuppiler.ReadOnly = isReadOnly;
             txtSupplierAddress.ReadOnly = isReadOnly;
             txtSupplierNotesRemarks.ReadOnly = isReadOnly;
+            txtProductSupplied.ReadOnly = isReadOnly;
 
             cmbStatus.Enabled = !isReadOnly;
 
@@ -81,6 +93,7 @@ namespace UI
             txtEmailSuppiler.Clear();
             txtSupplierAddress.Clear();
             txtSupplierNotesRemarks.Clear();
+            txtProductSupplied.Clear();
             cmbStatus.SelectedIndex = -1;
 
             dtgSupplierItems.ClearSelection();
@@ -96,7 +109,7 @@ namespace UI
                 if (rowView != null)
                 {
                     currentSupplierId = Convert.ToInt32(rowView["Id"]);
-                    txtSupplierName.Text = rowView["Name"]?.ToString();
+                    txtSupplierName.Text = rowView["SupplierName"]?.ToString();
                     txtProductSupplied.Text = rowView["ProductsSupplied"]?.ToString();
                     txtContactPerson.Text = rowView["ContactPerson"]?.ToString();
                     txtPhoneSupplier.Text = rowView["ContactNumber"]?.ToString();
@@ -178,7 +191,7 @@ namespace UI
                 {
                     Id = currentSupplierId,
                     Name = txtSupplierName.Text.Trim(),
-                    ProductsSupplied = "", // Not used in this layout
+                    ProductsSupplied = txtProductSupplied.Text.Trim(),
                     ContactPerson = txtContactPerson.Text.Trim(),
                     ContactNumber = txtPhoneSupplier.Text.Trim(),
                     Email = txtEmailSuppiler.Text.Trim(),

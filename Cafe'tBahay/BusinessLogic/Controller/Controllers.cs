@@ -205,6 +205,7 @@ namespace BusinessLogic.Controller
 
             Validation.Password(adminPassword);
             Validation.Password(cashierPassword);
+            repository.Bootstrap(adminUsername, adminPassword, cashierUsername, cashierPassword);
         }
     }
 

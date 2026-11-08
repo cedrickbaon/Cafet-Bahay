@@ -1,12 +1,5 @@
-﻿using Microsoft.VisualBasic;
 using Model;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Data.Common;
-using System.Linq;
-using System.Reflection.Emit;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace BusinessLogic.Repository
 {
@@ -69,7 +62,7 @@ namespace BusinessLogic.Repository
                         "Invalid saved role.");
                 }
 
-                // Plain text password check
+                
                 string storedPassword = row.IsNull("Password") ? string.Empty : Convert.ToString(row["Password"]);
                 bool validPassword = (password == storedPassword);
 
@@ -350,17 +343,17 @@ namespace BusinessLogic.Repository
                     connection,
                     transaction,
                     @"SELECT
-                        [Supplier ID] AS Id,
-                        [Supplier Name] AS Name,
-                        [Product Supplied] AS ProductsSupplied,
-                        [Contact Person] AS ContactPerson,
-                        [Contact Number] AS ContactNumber,
-                        [Email Address] AS Email,
+                        [SupplierID] AS Id,
+                        [SupplierName] AS SupplierName,
+                        [ProductSupplied] AS ProductsSupplied,
+                        [ContactPerson] AS ContactPerson,
+                        [ContactNumber] AS ContactNumber,
+                        [EmailAddress] AS Email,
                         [Address] AS Address,
                         [Status] AS Status,
-                        [Notes/Remarks (Optional)] AS Notes
+                        [Notes/Remarks(Optional)] AS Notes
                       FROM dbo.tblSupplierTable
-                      ORDER BY [Supplier Name]"));
+                      ORDER BY [SupplierName]"));
         }
 
         internal int Add(Supplier supplier)
@@ -370,15 +363,15 @@ namespace BusinessLogic.Repository
                     connection,
                     transaction,
                     @"INSERT INTO dbo.tblSupplierTable
-                        ([Supplier Name], [Products Supplied],
-                         [Contact Person], [Contact Number],
-                         [Email Address], [Address],
-                         [Status], [Notes/Remarks (Optional)])
-                      OUTPUT INSERTED.[Supplier ID]
+                        ([SupplierName], [ProductSupplied],
+                         [ContactPerson], [ContactNumber],
+                         [EmailAddress], [Address],
+                         [Status], [Notes/Remarks(Optional)])
+                      OUTPUT INSERTED.[SupplierID]
                       VALUES
                         (@name, @products, @person, @phone,
                          @email, @address, @status, @notes)",
-                    "@name", supplier.Name,
+                    "@name", supplier.SupplierName,
                     "@products", supplier.ProductsSupplied,
                     "@person", supplier.ContactPerson,
                     "@phone", supplier.ContactNumber,
@@ -396,16 +389,16 @@ namespace BusinessLogic.Repository
                     connection,
                     transaction,
                     @"UPDATE dbo.tblSupplierTable
-                      SET [Supplier Name] = @name,
-                          [Products Supplied] = @products,
-                          [Contact Person] = @person,
-                          [Contact Number] = @phone,
-                          [Email Address] = @email,
+                      SET [SupplierName] = @name,
+                          [ProductSupplied] = @products,
+                          [ContactPerson] = @person,
+                          [ContactNumber] = @phone,
+                          [EmailAddress] = @email,
                           [Address] = @address,
                           [Status] = @status,
-                          [Notes/Remarks (Optional)] = @notes
-                      WHERE [Supplier ID] = @id",
-                    "@name", supplier.Name,
+                          [Notes/Remarks(Optional)] = @notes
+                      WHERE [SupplierID] = @id",
+                    "@name", supplier.SupplierName,
                     "@products", supplier.ProductsSupplied,
                     "@person", supplier.ContactPerson,
                     "@phone", supplier.ContactNumber,
@@ -428,7 +421,7 @@ namespace BusinessLogic.Repository
                     transaction,
                     @"UPDATE dbo.tblSupplierTable
                       SET [Status] = 'Inactive'
-                      WHERE [Supplier ID] = @id",
+                      WHERE [SupplierID] = @id",
                     "@id", id));
 
                 return 0;
@@ -443,7 +436,7 @@ namespace BusinessLogic.Repository
                     connection,
                     transaction,
                     @"DELETE FROM dbo.tblSupplierTable
-                      WHERE [Supplier ID] = @id",
+                      WHERE [SupplierID] = @id",
                     "@id", id));
 
                 return 0;
@@ -467,12 +460,12 @@ namespace BusinessLogic.Repository
                     connection,
                     transaction,
                     @"SELECT
-                        [Category ID] AS Id,
-                        [Category Name] AS Name,
+                        [CategoryID] AS Id,
+                        [CategoryName] AS Name,
                         [Description] AS Description,
-                        [Notes/Remarks (Optional)] AS Notes
+                        [Notes/Remarks(Optional)] AS Notes
                       FROM dbo.tblCategory
-                      ORDER BY [Category Name]"));
+                      ORDER BY [CategoryName]"));
         }
 
         internal DataTable Lookup()
@@ -482,10 +475,10 @@ namespace BusinessLogic.Repository
                     connection,
                     transaction,
                     @"SELECT
-                        [Category ID] AS Id,
-                        [Category Name] AS Name
+                        [CategoryID] AS Id,
+                        [CategoryName] AS Name
                       FROM dbo.tblCategory
-                      ORDER BY [Category Name]"));
+                      ORDER BY [CategoryName]"));
         }
 
         internal int Add(Category category)
@@ -495,9 +488,9 @@ namespace BusinessLogic.Repository
                     connection,
                     transaction,
                     @"INSERT INTO dbo.tblCategory
-                        ([Category Name], [Description],
-                         [Notes/Remarks (Optional)])
-                      OUTPUT INSERTED.[Category ID]
+                        ([CategoryName], [Description],
+                         [Notes/Remarks(Optional)])
+                      OUTPUT INSERTED.[CategoryID]
                       VALUES (@name, @description, @notes)",
                     "@name", category.Name,
                     "@description", category.Description,
@@ -512,10 +505,10 @@ namespace BusinessLogic.Repository
                     connection,
                     transaction,
                     @"UPDATE dbo.tblCategory
-                      SET [Category Name] = @name,
+                      SET [CategoryName] = @name,
                           [Description] = @description,
-                          [Notes/Remarks (Optional)] = @notes
-                      WHERE [Category ID] = @id",
+                          [Notes/Remarks(Optional)] = @notes
+                      WHERE [CategoryID] = @id",
                     "@name", category.Name,
                     "@description", category.Description,
                     "@notes", category.Notes,
@@ -542,16 +535,16 @@ namespace BusinessLogic.Repository
                     connection,
                     transaction,
                     @"SELECT
-                        [Product ID] AS Id,
-                        [Product Name] AS Name,
-                        [Category ID] AS CategoryId,
-                        [Supplier ID] AS SupplierId,
+                        [ProductID] AS Id,
+                        [ProductName] AS Name,
+                        [CategoryID] AS CategoryId,
+                        [SupplierID] AS SupplierId,
                         Price,
-                        [Stock Quantity] AS StockQuantity,
-                        [Product Status] AS Status,
+                        [StockQuantity] AS StockQuantity,
+                        [ProductStatus] AS Status,
                         RowVersion
                       FROM dbo.tblProducts
-                      ORDER BY [Product Name]"));
+                      ORDER BY [ProductName]"));
         }
 
         internal int Add(Product product)
@@ -561,10 +554,10 @@ namespace BusinessLogic.Repository
                     connection,
                     transaction,
                     @"INSERT INTO dbo.tblProducts
-                        ([Product Name], [Category ID],
-                         [Supplier ID], Price,
-                         [Stock Quantity], [Product Status])
-                      OUTPUT INSERTED.[Product ID]
+                        ([ProductName], [CategoryID],
+                         [SupplierID], Price,
+                         [StockQuantity], [ProductStatus])
+                      OUTPUT INSERTED.[ProductID]
                       VALUES
                         (@name, @category, @supplier,
                          @price, @stock, @status)",
@@ -584,13 +577,13 @@ namespace BusinessLogic.Repository
                     connection,
                     transaction,
                     @"UPDATE dbo.tblProducts
-                      SET [Product Name] = @name,
-                          [Category ID] = @category,
-                          [Supplier ID] = @supplier,
+                      SET [ProductName] = @name,
+                          [CategoryID] = @category,
+                          [SupplierID] = @supplier,
                           Price = @price,
-                          [Stock Quantity] = @stock,
-                          [Product Status] = @status
-                      WHERE [Product ID] = @id
+                          [StockQuantity] = @stock,
+                          [ProductStatus] = @status
+                      WHERE [ProductID] = @id
                         AND RowVersion = @version",
                     "@name", product.Name,
                     "@category", product.CategoryId,
@@ -613,8 +606,8 @@ namespace BusinessLogic.Repository
                     connection,
                     transaction,
                     @"UPDATE dbo.tblProducts
-                      SET [Product Status] = 'Inactive'
-                      WHERE [Product ID] = @id",
+                      SET [ProductStatus] = 'Inactive'
+                      WHERE [ProductID] = @id",
                     "@id", id));
 
                 return 0;
@@ -635,7 +628,7 @@ namespace BusinessLogic.Repository
                             transaction,
                             @"SELECT COUNT(*)
                               FROM dbo.tblCategory
-                              WHERE [Category ID] = @id",
+                              WHERE [CategoryID] = @id",
                             "@id", categoryId.Value));
 
                     if (count == 0)
@@ -662,20 +655,20 @@ namespace BusinessLogic.Repository
                     connection,
                     transaction,
                     @"SELECT
-                        p.[Product ID] AS Id,
-                        p.[Product Name] AS Name,
-                        p.[Category ID] AS CategoryId,
-                        c.[Category Name] AS Category,
-                        p.[Supplier ID] AS SupplierId,
+                        p.[ProductID] AS Id,
+                        p.[ProductName] AS Name,
+                        p.[CategoryID] AS CategoryId,
+                        c.[CategoryName] AS Category,
+                        p.[SupplierID] AS SupplierId,
                         p.Price,
-                        p.[Stock Quantity] AS StockQuantity,
-                        p.[Product Status] AS Status,
+                        p.[StockQuantity] AS StockQuantity,
+                        p.[ProductStatus] AS Status,
                         p.RowVersion,
 
                         CASE
-                            WHEN p.[Stock Quantity] = 0
+                            WHEN p.[StockQuantity] = 0
                                 THEN 'Out of Stock'
-                            WHEN p.[Stock Quantity] <= 5
+                            WHEN p.[StockQuantity] <= 5
                                 THEN 'Low Stock'
                             ELSE 'In Stock'
                         END AS StockStatus
@@ -683,20 +676,20 @@ namespace BusinessLogic.Repository
                       FROM dbo.tblProducts p
 
                       INNER JOIN dbo.tblCategory c
-                        ON c.[Category ID] = p.[Category ID]
+                        ON c.[CategoryID] = p.[CategoryID]
 
                       WHERE
-                        p.[Product Name]
+                        p.[ProductName]
                             COLLATE Latin1_General_100_CI_AS
                             LIKE @keyword ESCAPE '~'
 
                         AND (@category IS NULL
-                             OR p.[Category ID] = @category)
+                             OR p.[CategoryID] = @category)
 
                         AND (@admin = 1
-                             OR p.[Product Status] = 'Active')
+                             OR p.[ProductStatus] = 'Active')
 
-                      ORDER BY p.[Product Name]",
+                      ORDER BY p.[ProductName]",
                     "@keyword", "%" + escapedKeyword + "%",
                     "@category", categoryId.HasValue
                         ? (object)categoryId.Value
@@ -713,7 +706,7 @@ namespace BusinessLogic.Repository
                     transaction,
                     @"SELECT COUNT(*)
                       FROM dbo.tblProducts
-                      WHERE [Product Status] = 'Active'")));
+                      WHERE [ProductStatus] = 'Active'")));
         }
     }
 
@@ -730,16 +723,45 @@ namespace BusinessLogic.Repository
             List<CartItem> items,
             decimal payment)
         {
+
             return Run(false, (connection, transaction) =>
             {
+                // Use Philippine date for the transaction number
+                DateTime philippineDate = DateTime.UtcNow.AddHours(8);
+
+                string prefix = "CB-" +
+                    philippineDate.ToString("yyyyMMdd") + "-";
+
+                // Find the highest transaction number for this date.
+                // The table lock prevents two simultaneous sales
+                // from receiving the same transaction number.
+                int lastNumber = Convert.ToInt32(
+                    Database.Scalar(
+                        connection,
+                        transaction,
+                        @"SELECT ISNULL(
+                MAX(TRY_CONVERT(INT, RIGHT(TransactionNumber, 4))),
+                0)
+              FROM dbo.Sales WITH (TABLOCKX, HOLDLOCK)
+              WHERE TransactionNumber LIKE
+                @prefix + '[0-9][0-9][0-9][0-9]'",
+                        "@prefix", prefix));
+
+                if (lastNumber >= 9999)
+                    throw new InvalidOperationException(
+                        "Daily transaction limit reached.");
+
+                string newTransactionNumber =
+                    prefix + (lastNumber + 1).ToString("D4");
+
                 var receipt = new Receipt
                 {
-                    TransactionNumber =
-                        Guid.NewGuid().ToString("N"),
+                    TransactionNumber = newTransactionNumber,
                     SoldAtUtc = DateTime.UtcNow,
                     CashierId = Session.UserId.Value,
                     Payment = payment
                 };
+
 
                 foreach (CartItem item in
                     items.OrderBy(x => x.ProductId))
@@ -748,13 +770,13 @@ namespace BusinessLogic.Repository
                         connection,
                         transaction,
                         @"SELECT
-                            [Product Name] AS Name,
+                            [ProductName] AS Name,
                             Price,
-                            [Stock Quantity] AS StockQuantity,
-                            [Product Status] AS Status
+                            [StockQuantity] AS StockQuantity,
+                            [ProductStatus] AS Status
                           FROM dbo.tblProducts
                             WITH (UPDLOCK, HOLDLOCK)
-                          WHERE [Product ID] = @id",
+                          WHERE [ProductID] = @id",
                         "@id", item.ProductId);
 
                     if (table.Rows.Count != 1)
@@ -804,17 +826,18 @@ namespace BusinessLogic.Repository
                         connection,
                         transaction,
                         @"INSERT INTO dbo.Sales
-                            (TransactionNumber, SoldAtUtc,
-                             CashierId, Total, Payment)
-                          OUTPUT INSERTED.Id
-                          VALUES
-                            (@number, @date,
-                             @cashier, @total, @payment)",
+                          (TransactionNumber, SoldAtUtc,
+                           CashierId, Total, Payment, [Change])
+                         OUTPUT INSERTED.SaleId
+                         VALUES
+                         (@number, @date,
+                         @cashier, @total, @payment, @change)",
                         "@number", receipt.TransactionNumber,
                         "@date", receipt.SoldAtUtc,
                         "@cashier", receipt.CashierId,
                         "@total", receipt.Total,
-                        "@payment", payment));
+                        "@payment", payment,
+                        "@change", payment - receipt.Total));
 
                 foreach (ReceiptLine line in receipt.Lines)
                 {
@@ -822,25 +845,23 @@ namespace BusinessLogic.Repository
                         connection,
                         transaction,
                         @"INSERT INTO dbo.SaleItems
-                            (SaleId, ProductId, ProductName,
-                             Quantity, UnitPrice)
-                          VALUES
-                            (@sale, @product, @name,
-                             @quantity, @price)",
+                         (SaleId, ProductId, Quantity, UnitPrice, Subtotal)
+                        VALUES
+                         (@sale, @product, @quantity, @price, @subtotal)",
                         "@sale", receipt.SaleId,
                         "@product", line.ProductId,
-                        "@name", line.ProductName,
                         "@quantity", line.Quantity,
-                        "@price", line.UnitPrice);
+                        "@price", line.UnitPrice,
+                        "@subtotal", line.Subtotal);
 
                     Database.RequireRow(Database.Execute(
                         connection,
                         transaction,
                         @"UPDATE dbo.tblProducts
-                          SET [Stock Quantity] =
-                              [Stock Quantity] - @quantity
-                          WHERE [Product ID] = @id
-                            AND [Stock Quantity] >= @quantity",
+                          SET [StockQuantity] =
+                              [StockQuantity] - @quantity
+                          WHERE [ProductID] = @id
+                            AND [StockQuantity] >= @quantity",
                         "@quantity", line.Quantity,
                         "@id", line.ProductId));
                 }
@@ -873,7 +894,7 @@ namespace BusinessLogic.Repository
                             transaction,
                             @"SELECT COUNT(*)
                               FROM dbo.tblCategory
-                              WHERE [Category ID] = @id",
+                              WHERE [CategoryID] = @id",
                             "@id", categoryId.Value));
 
                     if (count == 0)
@@ -884,15 +905,22 @@ namespace BusinessLogic.Repository
                 return Database.Table(
                     connection,
                     transaction,
-                    @"SELECT *
-                      FROM dbo.vwInventory
-                      WHERE
-                        (@category IS NULL
-                         OR CategoryId = @category)
-
-                        AND (@status IS NULL
-                             OR StockStatus = @status)
-
+                    @"SELECT * FROM
+                      (
+                        SELECT p.[ProductID] AS ProductId,
+                               p.[ProductName] AS ProductName,
+                               p.[CategoryID] AS CategoryId,
+                               c.[CategoryName] AS Category,
+                               p.[StockQuantity] AS CurrentStock,
+                               p.[ProductStatus] AS ProductStatus,
+                               CASE WHEN p.[StockQuantity] = 0 THEN 'Out of Stock'
+                                    WHEN p.[StockQuantity] <= 5 THEN 'Low Stock'
+                                    ELSE 'In Stock' END AS StockStatus
+                        FROM dbo.tblProducts p
+                        INNER JOIN dbo.tblCategory c ON c.[CategoryID] = p.[CategoryID]
+                      ) AS inventory
+                      WHERE (@category IS NULL OR CategoryId = @category)
+                        AND (@status IS NULL OR StockStatus = @status)
                       ORDER BY ProductName",
                     "@category", categoryId.HasValue
                         ? (object)categoryId.Value
@@ -910,7 +938,7 @@ namespace BusinessLogic.Repository
                     connection,
                     transaction,
                     @"SELECT
-                        s.Id AS TransactionId,
+                        s.SaleId AS TransactionId,
                         s.TransactionNumber,
                         s.SoldAtUtc,
                         u.Username AS Cashier,
@@ -926,7 +954,7 @@ namespace BusinessLogic.Repository
                       WHERE s.SoldAtUtc >= @from
                         AND s.SoldAtUtc < @to
 
-                      ORDER BY s.SoldAtUtc, s.Id",
+                      ORDER BY s.SoldAtUtc, s.SaleId",
                     "@from", fromUtc,
                     "@to", toExclusiveUtc));
         }
