@@ -5,7 +5,7 @@ namespace UI
 {
     public partial class AdminDashboard : Form
     {
-            public AdminDashboard()
+        public AdminDashboard()
         {
             InitializeComponent();
 
@@ -72,6 +72,11 @@ namespace UI
         private void btnLogout_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnSalesReport_Click(object sender, EventArgs e)
+        {
+            ShowPage(new ucSalesReport());
         }
     }
 }

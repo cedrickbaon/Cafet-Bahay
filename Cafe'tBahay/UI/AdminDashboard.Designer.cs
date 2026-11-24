@@ -45,6 +45,7 @@
             btnInventoryandSales = new Button();
             btnLogout = new Button();
             pnlSidebar = new Panel();
+            btnSalesReport = new Button();
             pnlHeader.SuspendLayout();
             pnlSidebar.SuspendLayout();
             SuspendLayout();
@@ -154,7 +155,7 @@
             btnSupplier.FlatStyle = FlatStyle.Flat;
             btnSupplier.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSupplier.ForeColor = Color.White;
-            btnSupplier.Location = new Point(13, 75);
+            btnSupplier.Location = new Point(12, 249);
             btnSupplier.Name = "btnSupplier";
             btnSupplier.Size = new Size(184, 48);
             btnSupplier.TabIndex = 4;
@@ -167,7 +168,7 @@
             btnCategory.FlatStyle = FlatStyle.Flat;
             btnCategory.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnCategory.ForeColor = Color.White;
-            btnCategory.Location = new Point(13, 128);
+            btnCategory.Location = new Point(12, 184);
             btnCategory.Name = "btnCategory";
             btnCategory.Size = new Size(184, 48);
             btnCategory.TabIndex = 5;
@@ -180,7 +181,7 @@
             btnUserRole.FlatStyle = FlatStyle.Flat;
             btnUserRole.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnUserRole.ForeColor = Color.White;
-            btnUserRole.Location = new Point(13, 183);
+            btnUserRole.Location = new Point(12, 117);
             btnUserRole.Name = "btnUserRole";
             btnUserRole.Size = new Size(184, 48);
             btnUserRole.TabIndex = 6;
@@ -193,7 +194,7 @@
             btnProductMaintenance.FlatStyle = FlatStyle.Flat;
             btnProductMaintenance.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnProductMaintenance.ForeColor = Color.White;
-            btnProductMaintenance.Location = new Point(13, 239);
+            btnProductMaintenance.Location = new Point(12, 312);
             btnProductMaintenance.Name = "btnProductMaintenance";
             btnProductMaintenance.Size = new Size(184, 48);
             btnProductMaintenance.TabIndex = 7;
@@ -206,7 +207,7 @@
             btnProductSearch.FlatStyle = FlatStyle.Flat;
             btnProductSearch.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnProductSearch.ForeColor = Color.White;
-            btnProductSearch.Location = new Point(13, 291);
+            btnProductSearch.Location = new Point(12, 383);
             btnProductSearch.Name = "btnProductSearch";
             btnProductSearch.Size = new Size(184, 48);
             btnProductSearch.TabIndex = 8;
@@ -217,13 +218,13 @@
             // btnInventoryandSales
             // 
             btnInventoryandSales.FlatStyle = FlatStyle.Flat;
-            btnInventoryandSales.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnInventoryandSales.Font = new Font("Segoe UI", 10.18868F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnInventoryandSales.ForeColor = Color.White;
-            btnInventoryandSales.Location = new Point(13, 345);
+            btnInventoryandSales.Location = new Point(12, 451);
             btnInventoryandSales.Name = "btnInventoryandSales";
-            btnInventoryandSales.Size = new Size(184, 37);
+            btnInventoryandSales.Size = new Size(184, 48);
             btnInventoryandSales.TabIndex = 9;
-            btnInventoryandSales.Text = "Inventory && Sales Report";
+            btnInventoryandSales.Text = "Inventory";
             btnInventoryandSales.UseVisualStyleBackColor = true;
             btnInventoryandSales.Click += btnInventoryandSales_Click_1;
             // 
@@ -232,7 +233,7 @@
             btnLogout.BackColor = Color.FromArgb(127, 29, 29);
             btnLogout.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnLogout.ForeColor = Color.White;
-            btnLogout.Location = new Point(10, 400);
+            btnLogout.Location = new Point(12, 595);
             btnLogout.Name = "btnLogout";
             btnLogout.Size = new Size(184, 52);
             btnLogout.TabIndex = 10;
@@ -243,6 +244,7 @@
             // pnlSidebar
             // 
             pnlSidebar.BackColor = Color.FromArgb(31, 41, 55);
+            pnlSidebar.Controls.Add(btnSalesReport);
             pnlSidebar.Controls.Add(btnLogout);
             pnlSidebar.Controls.Add(btnInventoryandSales);
             pnlSidebar.Controls.Add(btnProductSearch);
@@ -258,6 +260,19 @@
             pnlSidebar.Name = "pnlSidebar";
             pnlSidebar.Size = new Size(210, 793);
             pnlSidebar.TabIndex = 0;
+            // 
+            // btnSalesReport
+            // 
+            btnSalesReport.FlatStyle = FlatStyle.Flat;
+            btnSalesReport.Font = new Font("Segoe UI", 10.18868F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSalesReport.ForeColor = Color.White;
+            btnSalesReport.Location = new Point(12, 521);
+            btnSalesReport.Name = "btnSalesReport";
+            btnSalesReport.Size = new Size(184, 48);
+            btnSalesReport.TabIndex = 11;
+            btnSalesReport.Text = "Sales Report";
+            btnSalesReport.UseVisualStyleBackColor = true;
+            btnSalesReport.Click += btnSalesReport_Click;
             // 
             // AdminDashboard
             // 
@@ -298,6 +313,7 @@
         private System.Windows.Forms.Button btnInventoryandSales;
         private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.Panel pnlSidebar;
+        private Button btnSalesReport;
     }
 }
 

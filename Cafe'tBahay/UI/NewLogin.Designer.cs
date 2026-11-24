@@ -44,13 +44,13 @@
             // 
             // panel1
             // 
-            panel1.Anchor = AnchorStyles.None;
             panel1.BackColor = SystemColors.ControlDark;
             panel1.Controls.Add(label1);
+            panel1.Dock = DockStyle.Top;
             panel1.ForeColor = SystemColors.AppWorkspace;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(870, 59);
+            panel1.Size = new Size(1522, 59);
             panel1.TabIndex = 2;
             // 
             // label1
@@ -59,7 +59,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Tahoma", 18.3396225F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = SystemColors.ActiveCaptionText;
-            label1.Location = new Point(39, 9);
+            label1.Location = new Point(421, 9);
             label1.Name = "label1";
             label1.Size = new Size(767, 33);
             label1.TabIndex = 0;
@@ -77,13 +77,14 @@
             panel2.Controls.Add(btnAdminLoginButton);
             panel2.Controls.Add(label2);
             panel2.ForeColor = SystemColors.ActiveBorder;
-            panel2.Location = new Point(118, 101);
+            panel2.Location = new Point(492, 203);
             panel2.Name = "panel2";
             panel2.Size = new Size(635, 385);
             panel2.TabIndex = 3;
             // 
             // label4
             // 
+            label4.Anchor = AnchorStyles.None;
             label4.AutoSize = true;
             label4.Font = new Font("Tahoma", 16.3018875F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.ForeColor = SystemColors.ActiveCaptionText;
@@ -95,6 +96,7 @@
             // 
             // label3
             // 
+            label3.Anchor = AnchorStyles.None;
             label3.AutoSize = true;
             label3.Font = new Font("Tahoma", 16.3018875F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = SystemColors.ActiveCaptionText;
@@ -106,6 +108,7 @@
             // 
             // txtPassword
             // 
+            txtPassword.Anchor = AnchorStyles.None;
             txtPassword.Font = new Font("Tahoma", 23.7735844F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtPassword.ForeColor = Color.Black;
             txtPassword.Location = new Point(67, 245);
@@ -133,6 +136,7 @@
             // 
             // txtUserName
             // 
+            txtUserName.Anchor = AnchorStyles.None;
             txtUserName.Font = new Font("Tahoma", 23.7735844F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtUserName.ForeColor = Color.Black;
             txtUserName.Location = new Point(67, 138);
@@ -158,7 +162,6 @@
             // 
             // label2
             // 
-            label2.Anchor = AnchorStyles.None;
             label2.AutoSize = true;
             label2.Font = new Font("Tahoma", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = SystemColors.ActiveCaptionText;
@@ -173,11 +176,12 @@
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DimGray;
-            ClientSize = new Size(867, 541);
+            ClientSize = new Size(1522, 813);
             Controls.Add(panel2);
             Controls.Add(panel1);
             Name = "NewLogin";
             Text = "LoginForm";
+            WindowState = FormWindowState.Maximized;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
